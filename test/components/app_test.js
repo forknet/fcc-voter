@@ -7,8 +7,13 @@ describe('App' , () => {
   beforeEach(() => {
     component = renderComponent(App);
   });
-
-  it('renders something', () => {
-    expect(component).to.exist;
+  it('contains a Nav-Bar', () => {
+    expect(component.find('nav')).to.exist
   });
+  it('contains Votes-container', () => {
+    expect(component.find('.votes-container')).to.exist
+  });
+  it('contains a Footer', () => {
+    expect(component.find('.footer')).to.exist
+  })
 });
