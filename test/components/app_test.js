@@ -14,6 +14,6 @@ describe('App' , () => {
     expect(component.find('.votes-container')).to.exist
   });
   it('contains a Footer', () => {
-    expect(component.find('.footer')).to.exist
+    expect(component.find('.page-footer')).to.exist
   })
 });
