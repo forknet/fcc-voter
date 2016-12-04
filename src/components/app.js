@@ -7,7 +7,7 @@ import '../stylesheets/style.scss';
 export default class App extends Component {
   render() {
     return (
-      <div>
+      <div id="app">
         <NavBar />
         <VotesContainer />
         <Footer />
