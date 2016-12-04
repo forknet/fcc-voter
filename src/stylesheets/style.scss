@@ -1,3 +1,5 @@
+$style-blue : #5c6fc5;
+
 #app {
   display: flex;
   min-height: 100vh;
@@ -6,4 +8,18 @@
 
 main {
   flex: 1 0 auto;
+}
+
+
+.page-footer{
+  padding-top: 0px !important;
+  background-color: $style-blue !important;
+  .font-awesome{
+    margin-top: 4px;
+    a { color: inherit; }
+    .fa{
+      padding-left: 0.35em;
+      cursor: pointer;
+    }
+  }
 }

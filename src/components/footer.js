@@ -3,26 +3,21 @@ export default class Footer extends Component {
   render(){
     return(
       <footer className="page-footer">
-        <div className="container">
-          <div className="row">
-            <div className="col l6 s12">
-              <h5 className="white-text">Footer Content</h5>
-              <p className="grey-text text-lighten-4">You can use rows and columns here to organize your footer content.</p>
-            </div>
-            <div className="col l4 offset-l2 s12">
-              <h5 className="white-text">Links</h5>
-
-            </div>
-          </div>
-        </div>
         <div className="footer-copyright">
           <div className="container">
-          © 2014 Copyright Text
-          <a className="grey-text text-lighten-4 right" href="#!">More Links</a>
+            <div className="row">
+              <div className="col s6">
+                © Kenzo Mendoza 2016
+              </div>
+              <div className="col s6 right-align font-awesome">
+                <a href="http://kenzomendoza.com/"><i className="fa fa-address-card-o fa-2x"></i></a>
+                <a href="https://github.com/Neotriz/fcc-voter"><i className="fa fa-github fa-2x"></i></a>
+                <a href="https://www.freecodecamp.com/challenges/build-a-voting-app"><i className="fa fa-free-code-camp fa-2x"></i></a>
+              </div>
+            </div>
           </div>
         </div>
       </footer>
-
     )
   }
 }
