@@ -9,6 +9,9 @@ describe('NavBar', () =>{
   it('has the correct className', ()=>{
     expect(component).to.have.class('nav-wrapper')
   })
+  it('has the right brand text', ()=>{
+    expect(component.find('.brand')).to.have.text('Votez')
+  })
   it('has a home button', () =>{
     expect(component.find('.home')).to.exist
   })
