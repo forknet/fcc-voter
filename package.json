@@ -6,7 +6,7 @@
   "repository": "",
   "scripts": {
     "start": "node server.js",
-    "test": "mocha --compilers js:babel-core/register --require ./test/test_helper.js --recursive ./test",
+    "test": "mocha --compilers js:babel-core/register --require ./test/test_helper.js --require ignore-styles  --recursive ./test",
     "test:watch": "npm run test -- --watch"
   },
   "author": "",
@@ -18,16 +18,17 @@
     "babel-preset-react": "^6.1.18",
     "chai": "^3.5.0",
     "chai-jquery": "^2.0.0",
+    "express": "^4.13.4",
+    "ignore-styles": "^5.0.1",
     "jquery": "^2.2.1",
     "jsdom": "^8.1.0",
     "mocha": "^2.4.5",
-    "express": "^4.13.4",
     "node-sass": "^3.8.0",
     "react-addons-test-utils": "^0.14.7",
     "react-hot-loader": "^1.3.1",
     "webpack": "^1.12.9",
-    "webpack-dev-server": "^1.16.2",
     "webpack-dev-middleware": "^1.6.1",
+    "webpack-dev-server": "^1.16.2",
     "webpack-hot-middleware": "^2.10.0"
   },
   "dependencies": {
