@@ -10,16 +10,19 @@ describe('NavBar', () =>{
     expect(component).to.have.class('nav-wrapper')
   })
   it('has the right brand text', ()=>{
-    expect(component.find('.brand')).to.have.text('Votez')
+    expect(component.find('.brand-logo')).to.have.text('Votez')
   })
   it('has a home button', () =>{
-    expect(component.find('.home')).to.exist
+    expect(component.find('.brand-logo')).to.have.attr("href", "/")
   })
-  it('has a sign-in button', () =>{
-    expect(component.find('.sign-in')).to.exist
+  it('has a log-in button', () =>{
+    expect(component.find('.login')).to.exist
   })
   it('has a welcome message to guest/user', () =>{
     expect(component.find('.welcome')).to.exist
+  })
+  it('has a button to view all polls', () =>{
+    expect(component.find('.all-polls')).to.exist
   })
 
 })
