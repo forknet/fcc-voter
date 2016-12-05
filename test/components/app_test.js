@@ -6,12 +6,13 @@ describe('App' , () => {
 
   beforeEach(() => {
     component = renderComponent(App);
+    console.log(component)
   });
   it('contains a Nav-Bar', () => {
     expect(component.find('nav')).to.exist
   });
-  it('contains Votes-container', () => {
-    expect(component.find('.votes-container')).to.exist
+  it('contains this.props.children', () => {
+    expect(component.children).to.exist
   });
   it('contains a Footer', () => {
     expect(component.find('.page-footer')).to.exist

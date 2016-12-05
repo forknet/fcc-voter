@@ -9,7 +9,7 @@ export default class App extends Component {
     return (
       <div id="app">
         <NavBar />
-        <VotesContainer />
+        {this.props.children}
         <Footer />
       </div>
     )
