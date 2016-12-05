@@ -7,9 +7,9 @@ export default class NavBar extends Component {
         <div className="nav-wrapper container">
           <Link className="brand-logo" to="/">Votez</Link>
             <ul className="right nav-right">
+              <li className="all-polls"><Link to="/allposts">View All Posts</Link> </li>
               <li className="welcome">Hello Guest </li>
-              <li className="all-polls"><Link to="/allposts">AllPosts</Link> </li>
-              <li className="login">Sign in </li>
+              <li className="login">Login</li>
             </ul>
         </div>
       </nav>

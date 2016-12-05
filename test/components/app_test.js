@@ -6,7 +6,6 @@ describe('App' , () => {
 
   beforeEach(() => {
     component = renderComponent(App);
-    console.log(component)
   });
   it('contains a Nav-Bar', () => {
     expect(component.find('nav')).to.exist
