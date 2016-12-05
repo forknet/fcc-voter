@@ -18,8 +18,8 @@ describe('NavBar', () =>{
   it('has a log-in button', () =>{
     expect(component.find('.login')).to.exist
   })
-  it('has a welcome message to guest/user', () =>{
-    expect(component.find('.welcome')).to.exist
+  it('has a signup button', () =>{
+    expect(component.find('.sign-up')).to.exist
   })
   it('has a button to view all polls', () =>{
     expect(component.find('.all-polls')).to.exist
