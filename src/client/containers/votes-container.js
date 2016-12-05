@@ -10,7 +10,7 @@ export default class VotesContainer extends Component {
             <div className="card blue-grey darken-1">
               <div className="card-content white-text">
                 <span className="card-title">Vote App Title #1</span>
-                <p>Some Description Here about the vote</p>
+                <p className="description">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
               </div>
               <div className="card-action">
                 <a href="#">Results</a>
@@ -22,7 +22,7 @@ export default class VotesContainer extends Component {
             <div className="card blue-grey darken-1">
               <div className="card-content white-text">
                 <span className="card-title">Vote App Title #2</span>
-                <p>Some Description Here about the vote</p>
+                <p className="description">Some Description Here about the vote</p>
               </div>
               <div className="card-action">
                 <a href="#">Results</a>
