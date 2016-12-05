@@ -7,7 +7,8 @@
   "scripts": {
     "start": "node server.js",
     "test": "mocha --compilers js:babel-core/register --require ./test/test_helper.js --require ignore-styles  --recursive ./test",
-    "test:watch": "npm run test -- --watch"
+    "test:watch": "npm run test -- --watch",
+    "dev": "nodemon src/server/index.js"
   },
   "author": "",
   "license": "ISC",
@@ -33,9 +34,18 @@
   },
   "dependencies": {
     "babel-preset-stage-1": "^6.1.18",
+    "bcrypt-nodejs": "0.0.3",
+    "body-parser": "^1.15.2",
     "css-loader": "^0.26.1",
+    "express": "^4.14.0",
+    "jwt-simple": "^0.5.1",
     "lodash": "^3.10.1",
+    "mongoose": "^4.7.1",
+    "morgan": "^1.7.0",
     "node-sass": "^3.13.0",
+    "passport": "^0.3.2",
+    "passport-jwt": "^2.2.1",
+    "passport-local": "^1.0.0",
     "proxy-middleware": "^0.15.0",
     "react": "^0.14.3",
     "react-dom": "^0.14.3",
