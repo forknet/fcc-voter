@@ -1,5 +1,5 @@
 import { renderComponent , expect } from '../test_helper';
-import Footer from '../../src/components/footer';
+import Footer from '../../src/client/components/footer';
 
 describe('Footer', () =>{
   let component;
