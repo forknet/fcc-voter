@@ -8,6 +8,7 @@ import thunk from 'redux-thunk';
 import App from './components/app';
 import VotesContainer from './containers/votes-container';
 import Welcome from './components/welcome'
+import Login from './components/auth/login'
 import reducers from './reducers/';
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
@@ -20,6 +21,7 @@ ReactDOM.render(
       <Route path="/" component={App}>
         <IndexRoute component={Welcome} />
         <Route path="allposts" component={VotesContainer} />
+        <Route path="login" component={Login} />
       </Route>
     </Router>
   </Provider>
