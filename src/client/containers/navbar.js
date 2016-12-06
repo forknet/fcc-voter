@@ -12,7 +12,7 @@ class NavBar extends Component {
                 <Link to="/allposts">View All Posts</Link>
               </li>
               <li className="sign-up">
-                Sign up
+                <Link to="/signup">Sign up</Link>
               </li>
               <li className="login">
                 <Link to="/login">Login</Link>

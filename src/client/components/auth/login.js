@@ -13,7 +13,7 @@ export default class Login extends Component {
       <main className="login container">
         <div className="row">
           <div className="col s12 form-title">
-            <h1><i className="fa fa-sign-in"></i> Log In </h1>
+            <h3><i className="fa fa-sign-in"></i> Log In </h3>
           </div>
         </div>
         <div className="row">
