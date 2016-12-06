@@ -33,10 +33,12 @@
     "webpack-hot-middleware": "^2.10.0"
   },
   "dependencies": {
+    "axios": "^0.15.3",
     "babel-preset-stage-1": "^6.1.18",
     "bcrypt-nodejs": "0.0.3",
     "body-parser": "^1.15.2",
     "chart.js": "^2.4.0",
+    "cors": "^2.8.1",
     "css-loader": "^0.26.1",
     "express": "^4.14.0",
     "jwt-simple": "^0.5.1",
