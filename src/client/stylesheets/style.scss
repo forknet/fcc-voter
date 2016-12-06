@@ -13,7 +13,7 @@ main {
 .nav-right{
   li{
     cursor: pointer;
-    padding-right: 10px;
+    padding-right: 1px;
   }
 }
 
@@ -36,4 +36,10 @@ main {
     left: 0px !important;
     transform: translateX(0%) !important;
   }
+}
+
+@media only screen and (min-width: 420px) {
+  // canvas{
+  //   height: 300px;
+  // }
 }

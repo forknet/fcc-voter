@@ -7,7 +7,7 @@ import thunk from 'redux-thunk';
 
 import App from './components/app';
 import VotesContainer from './containers/votes-container';
-import Welcome from './components/welcome';
+import VoteTemplate from './components/vote-template';
 import Login from './components/auth/login';
 import Signup from './components/auth/signup';
 import reducers from './reducers/';
@@ -20,7 +20,7 @@ ReactDOM.render(
   <Provider store={store}>
     <Router history={browserHistory}>
       <Route path="/" component={App}>
-        <IndexRoute component={Welcome} />
+        <IndexRoute component={VoteTemplate} />
         <Route path="allposts" component={VotesContainer} />
         <Route path="login" component={Login} />
         <Route path="signup" component={Signup} />

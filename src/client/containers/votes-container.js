@@ -5,9 +5,6 @@ import * as actions from '../actions'
 class VotesContainer extends Component {
   componentDidMount(){
     //Here is where we dispatch an action for the database to render the votes
-
-    console.log('test!')
-    this.props.fetchVotes()
   }
   render(){
     return(
