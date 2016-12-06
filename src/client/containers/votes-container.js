@@ -1,7 +1,11 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
-export default class VotesContainer extends Component {
+class VotesContainer extends Component {
+  componentDidMount(){
+    //Here is where we dispatch an action for the database to render the votes
+    console.log('test!')
+  }
   render(){
     return(
       <main className="votes-container container">
@@ -35,3 +39,9 @@ export default class VotesContainer extends Component {
     )
   }
 }
+
+function mapStateToProps(state){
+  return {auth: state.auth};
+}
+
+export default connect(mapStateToProps)(VotesContainer)
