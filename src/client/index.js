@@ -8,6 +8,7 @@ import promise from 'redux-promise';
 
 import App from './components/app';
 import VotesContainer from './containers/votes-container';
+import NewPoll from './containers/newpoll';
 import VoteTemplate from './components/vote-template';
 import Login from './components/auth/login';
 import Signup from './components/auth/signup';
@@ -28,6 +29,7 @@ ReactDOM.render(
         <Route path="allposts" component={VotesContainer} />
         <Route path="login" component={Login} />
         <Route path="signup" component={Signup} />
+        <Route path="newpoll" component={NewPoll} />
       </Route>
     </Router>
   </Provider>

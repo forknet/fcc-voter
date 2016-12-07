@@ -17,6 +17,9 @@ class NavBar extends Component {
               <li className="login">
                 <Link to="/login">Login</Link>
               </li>
+              <li className="newpoll">
+                <Link to="/newpoll">Add New Poll</Link>
+              </li>
             </ul>
         </div>
       </nav>
