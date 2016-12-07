@@ -1,18 +1,18 @@
 // Main starting point of the application
 const express = require('express');
-const http = require('http');
+const app = express();
+const path = require('path');
 const morgan = require('morgan');
+const port = process.env.PORT || 1234;
 const bodyParser = require('body-parser');
 const router = require('./router');
 const mongoose = require('mongoose');
+const db =  "mongodb://localhost/voteapp" || process.env.DB;
 
 const cors = require('cors')
 
 //DB Setup
-mongoose.connect('mongodb://localhost:votes/votes');
-
-
-const app = express();
+mongoose.connect(db);
 
 //App Setup
 app.use(morgan('combined'));
@@ -21,11 +21,13 @@ app.use(cors()) //CORS middleware on express side
 // app.use(bodyParser.json({ type: '*/*' }));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }))
-router(app);
 
+// router(app); <== Create the modular package after you are done
+
+app.get('/', function(req, res){
+  res.send({message: 'Super secret code is ABC123'})
+})
 //Server Setup(Express)
-const port = process.env.PORT || 1234;
-const server = http.createServer(app);
-server.listen(port, ()=>{
-  console.log(`server is on: ${port}`)
-} )
+app.listen(port,()=>{
+  console.log(`Server is listening on ${port}`)
+})
