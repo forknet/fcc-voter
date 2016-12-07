@@ -1,10 +1,14 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 import Chart from 'chart.js';
+import { Field,  reduxForm } from 'redux-form';
+const  { DOM: { input, select, textarea } } = React;
 import { Bar as BarChart } from 'react-chartjs';
+import { castVote } from '../actions/index';
 
-export default class VoteTemplate extends Component {
-  constructor() {
-    super();
+class VoteTemplate extends Component {
+  constructor(props) {
+    super(props);
     const data = {
       labels: ["January", "February", "March", "April", "May", "June"],
       datasets: [
@@ -30,10 +34,13 @@ export default class VoteTemplate extends Component {
       chartOptions: options
     };
   }
-  componentWillMount(){
+  onSubmit(props){
+    console.log(props)
+    console.log('test!')
   }
   render() {
     const { chartData, chartOptions } = this.state;
+    const { handleSubmit, submitting } = this.props
     return (
       <main className="welcome container">
         <div className="row">
@@ -42,27 +49,19 @@ export default class VoteTemplate extends Component {
           </div>
         </div>
         <BarChart data={chartData} options={chartOptions}/>
-        <form action="#">
+        <form onSubmit={handleSubmit(this.onSubmit.bind(this))}>
           <div className="row">
-            <div className="input-field col s12">
-              <p>
-                <input name="group1" type="radio" id="test1" />
-                <label htmlFor="test1">Red</label>
-              </p>
-              <p>
-                <input name="group1" type="radio" id="test2" />
-                <label htmlFor="test2">Yellow</label>
-              </p>
-              <p>
-                <input className="with-gap" name="group1" type="radio" id="test3"  />
-                <label htmlFor="test3">Green</label>
-              </p>
-            </div>
-            <div className="input-field col s12 m6 l5 custom-option">
-              <input id="custom-option" type="text" className="validate" />
-              <label htmlFor="custom-option">Custom Option</label>
-            </div>
             <div className="col s12">
+              <p>
+                <Field name="category" component="input" type="radio" className="radio-button-css" value="male"/>
+                <label>Male</label>
+              </p>
+              <p>
+                <Field name="category" component="input" type="radio" className="radio-button-css" value="female"/>
+                <label>Female</label>
+              </p>
+            </div>
+            <div className="col input-field s12">
               <button className="btn waves-effect waves-light" type="submit" name="action">Submit
                 <i className="fa fa-paper-plane-o"></i>
               </button>
@@ -73,3 +72,7 @@ export default class VoteTemplate extends Component {
     )
   }
 }
+
+export default reduxForm({
+  form: 'CastVote'
+}, null, castVote)(VoteTemplate)
