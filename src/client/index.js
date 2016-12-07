@@ -4,6 +4,7 @@ import { Provider } from 'react-redux';
 import { createStore, applyMiddleware } from 'redux';
 import { Router, Route, IndexRoute, browserHistory } from 'react-router';
 import thunk from 'redux-thunk';
+import promise from 'redux-promise';
 
 import App from './components/app';
 import VotesContainer from './containers/votes-container';
@@ -15,6 +16,9 @@ import reducers from './reducers/';
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 
 const store = createStore(reducers, composeEnhancers(applyMiddleware(thunk)))
+
+// const createStoreWithMiddleware = applyMiddleware(thunk)(createStore);
+// const store = createStoreWithMiddleware(reducers);
 
 ReactDOM.render(
   <Provider store={store}>

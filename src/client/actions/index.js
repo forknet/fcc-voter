@@ -15,6 +15,9 @@ import { AUTH_USER, AUTH_ERROR, UNAUTH_USER, FETCH_VOTES, CAST_VOTE } from './ty
 //   }
 // }
 export function castVote(props){
-  console.log('Casted a vote!')
   console.log(props)
+  return {
+    type: CAST_VOTE,
+    payload: props
+  }
 }

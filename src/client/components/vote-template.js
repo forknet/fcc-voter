@@ -4,7 +4,8 @@ import Chart from 'chart.js';
 import { Field,  reduxForm } from 'redux-form';
 const  { DOM: { input, select, textarea } } = React;
 import { Bar as BarChart } from 'react-chartjs';
-import { castVote } from '../actions/index';
+import { Link } from 'react-router';
+import * as actions from '../actions/';
 
 class VoteTemplate extends Component {
   constructor(props) {
@@ -35,8 +36,8 @@ class VoteTemplate extends Component {
     };
   }
   onSubmit(props){
-    console.log(props)
-    console.log('test!')
+    // console.log(this.props.castVote)
+    this.props.castVote(props)
   }
   render() {
     const { chartData, chartOptions } = this.state;
@@ -62,7 +63,7 @@ class VoteTemplate extends Component {
               </p>
             </div>
             <div className="col input-field s12">
-              <button className="btn waves-effect waves-light" type="submit" name="action">Submit
+              <button className="btn waves-effect waves-light" type="submit" disabled={submitting}>Submit
                 <i className="fa fa-paper-plane-o"></i>
               </button>
             </div>
@@ -73,6 +74,12 @@ class VoteTemplate extends Component {
   }
 }
 
-export default reduxForm({
+// export default reduxForm({
+//   form: 'CastVote'
+// }, null, actions )(VoteTemplate)
+
+VoteTemplate = reduxForm({
   form: 'CastVote'
-}, null, castVote)(VoteTemplate)
+})(VoteTemplate)
+
+export default VoteTemplate = connect(null, actions)(VoteTemplate)
