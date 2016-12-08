@@ -1,10 +1,10 @@
 import { combineReducers } from 'redux';
 import { reducer as formReducer } from 'redux-form';
-import AuthReducer from './auth_reducer'
+import VoteData from './vote_data_reducer'
 
 const rootReducer = combineReducers({
   form: formReducer,
-  auth: AuthReducer
+  voteData: VoteData
 });
 
 export default rootReducer;

@@ -7,7 +7,7 @@ const port = process.env.PORT || 1234;
 const bodyParser = require('body-parser');
 const router = require('./router');
 const mongoose = require('mongoose');
-const db =  "mongodb://localhost/voteapp" || process.env.DB;
+const db =  "mongodb://localhost:voteapp/voteapp";
 
 const cors = require('cors')
 
@@ -22,11 +22,9 @@ app.use(cors()) //CORS middleware on express side
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }))
 
-// router(app); <== Create the modular package after you are done
+router(app);
 
-app.get('/', function(req, res){
-  res.send({message: 'Super secret code is ABC123'})
-})
+
 //Server Setup(Express)
 app.listen(port,()=>{
   console.log(`Server is listening on ${port}`)

@@ -4,9 +4,13 @@ import * as actions from '../actions'
 
 class VotesContainer extends Component {
   componentDidMount(){
-    //Here is where we dispatch an action for the database to render the votes
+    this.props.fetchVotes()
+  }
+  renderCards(){
+    console.log('test')
   }
   render(){
+    console.log(this.props.voteData)
     return(
       <main className="votes-container container">
         <div className="row">
@@ -22,18 +26,6 @@ class VotesContainer extends Component {
               </div>
             </div>
           </div>
-          <div className="col s12 m6 l4">
-            <div className="card blue-grey darken-1">
-              <div className="card-content white-text">
-                <span className="card-title">Vote App Title #2</span>
-                <p className="description">Some Description Here about the vote</p>
-              </div>
-              <div className="card-action">
-                <a href="#">Results</a>
-                <a href="#">Date Created</a>
-              </div>
-            </div>
-          </div>
         </div>
       </main>
     )
@@ -41,7 +33,7 @@ class VotesContainer extends Component {
 }
 
 function mapStateToProps(state){
-  return {auth: state.auth};
+  return {voteData: state.voteData};
 }
 
 export default connect(mapStateToProps, actions)(VotesContainer)
