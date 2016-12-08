@@ -1,17 +1,14 @@
 import axios from 'axios';
 const ROOT_URL = 'http://localhost:1234';
 import { browserHistory } from 'react-router';
-import { AUTH_USER, AUTH_ERROR, UNAUTH_USER, FETCH_VOTES, CAST_VOTE } from './types';
+import { FETCH_VOTES, CAST_VOTE } from './types';
 
 export function fetchVotes(){
-  return function(dispatch){
-    axios.get(`${ROOT_URL}/newpost`)
-      .then(response => {
-        dispatch({
-          type: FETCH_VOTES,
-          payload: response.data
-        })
-      })
+  const request = axios.get(`${ROOT_URL}/newpost`);
+  return (dispatch) =>{
+    request.then(({data}) => {
+      dispatch({ type: FETCH_VOTES, payload: data})
+    })
   }
 }
 export function castVote(props){

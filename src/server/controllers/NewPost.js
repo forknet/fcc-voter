@@ -1,5 +1,6 @@
 const Poll = require('../models/PollData.model');
 const db =  "mongodb://localhost:voteapp/voteapp";
+const moment = require('moment');
 
 exports.newpost = function(req, res, next){
   console.log(req.body)
@@ -11,7 +12,7 @@ exports.newpost = function(req, res, next){
     title: title,
     description: description,
     labelOption: labelOption,
-    date: new Date()
+    date: moment().format('MMM D, YYYY')
   });
 
   poll.save(function(err) {

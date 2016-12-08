@@ -5,7 +5,7 @@ const pollData = new Schema({
   title: String,
   description: String,
   labelOption: String,
-  date: Date
+  date: String
 })
 
 module.exports = mongoose.model('PollData', pollData)

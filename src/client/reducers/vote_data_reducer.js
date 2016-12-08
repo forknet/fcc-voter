@@ -1,5 +1,8 @@
 import { FETCH_VOTES, CAST_VOTE } from '../actions/types'
-export default function(state={}, action){
+
+const INITIAL = { vote: []}
+
+export default function(state=INITIAL, action){
   switch (action.type) {
     case FETCH_VOTES:
       return {...state, vote: action.payload}
