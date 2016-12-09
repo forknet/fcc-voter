@@ -4,15 +4,17 @@ import { Field,  reduxForm } from 'redux-form';
 const  { DOM: { input, select, textarea } } = React;
 import * as actions from '../actions/';
 
-export default class NewPoll extends Component {
+class NewPoll extends Component {
   constructor(props){
     super(props)
-    this.handleFormSubmit = this.handleFormSubmit.bind(this)
+    this.onSubmit = this.onSubmit.bind(this)
   }
-  handleFormSubmit(){
-    console.log('hello')
+  onSubmit(props){
+    // console.log(this.props.castVote)
+    console.log(props)
   }
   render(){
+    const { handleSubmit, submitting } = this.props
     return(
       <main className="container">
         <div className="row">
@@ -21,20 +23,25 @@ export default class NewPoll extends Component {
           </div>
         </div>
         <div className="row">
-          <form onSubmit={this.handleFormSubmit} className="col s12 m10">
+          <form onSubmit={handleSubmit(this.onSubmit)} className="col s12 m10">
             <div className="row">
               <div className="input-field col s12">
                 <i className="fa fa-pencil-square-o prefix"></i>
-                <input id="first_name" type="text" className="validate" />
-                <label htmlFor="email">Title Poll</label>
+                <Field name="title" component="input" type="text"/>
+                <label>Title Poll</label>
               </div>
               <div className="input-field col s12">
-                <input id="last_name" type="text" className="validate" />
-                <label htmlFor="password">Description</label>
+                <Field name="description" component="input" type="text"/>
+                <label htmlFor="description">Description</label>
               </div>
               <div className="input-field col s12">
-                <textarea id="textarea1" className="materialize-textarea"></textarea>
+                <Field name="notes" component="textarea"/>
                 <label htmlFor="textarea1">Options (seperated by line)</label>
+              </div>
+              <div className="col input-field s12">
+                <button className="btn waves-effect waves-light" type="submit">Submit
+                  <i className="fa fa-paper-plane-o"></i>
+                </button>
               </div>
             </div>
           </form>
@@ -43,3 +50,11 @@ export default class NewPoll extends Component {
     )
   }
 }
+
+// export default NewPoll
+
+NewPoll = reduxForm({
+  form: 'NewPoll'
+})(NewPoll)
+
+export default NewPoll = connect(null, actions)(NewPoll)

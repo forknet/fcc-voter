@@ -34,6 +34,7 @@ class VoteTemplate extends Component {
       chartData: data,
       chartOptions: options
     };
+    this.onSubmit = this.onSubmit.bind(this)
   }
   onSubmit(props){
     // console.log(this.props.castVote)
@@ -50,7 +51,7 @@ class VoteTemplate extends Component {
           </div>
         </div>
         <BarChart data={chartData} options={chartOptions}/>
-        <form onSubmit={handleSubmit(this.onSubmit.bind(this))}>
+        <form onSubmit={handleSubmit(this.onSubmit)}>
           <div className="row">
             <div className="col s12">
               <p>
