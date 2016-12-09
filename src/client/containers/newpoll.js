@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Field,  reduxForm } from 'redux-form';
 const  { DOM: { input, select, textarea } } = React;
+import { Link } from 'react-router';
 import * as actions from '../actions/';
 
 class NewPoll extends Component {
@@ -42,6 +43,9 @@ class NewPoll extends Component {
                 <button className="btn waves-effect waves-light" type="submit">Submit
                   <i className="fa fa-paper-plane-o"></i>
                 </button>
+                <Link to="/allposts" className="btn waves-effect waves-light cancel-btn">Cancel
+                  <i className="fa fa-times"></i>
+                </Link>
               </div>
             </div>
           </form>

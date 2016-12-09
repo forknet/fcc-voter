@@ -17,6 +17,16 @@ main {
   }
 }
 
+.btn{
+  margin-left: 8px;
+}
+
+.cancel-btn{
+  background: rgb(193, 80, 85);
+  &:hover{
+    background: rgb(255, 50, 56);
+  }
+}
 
 .page-footer{
   padding-top: 0px !important;

@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import * as actions from '../actions'
+import * as actions from '../actions';
 
 class VotesContainer extends Component {
   componentWillMount(){
@@ -9,10 +9,10 @@ class VotesContainer extends Component {
   renderCards({title, date, description, _id}){
     return(
       <div key={_id} className="col s12 m6 l4">
-        <div className="card blue-grey darken-1">
+        <div className="card blue-grey darken-1 hoverable">
           <div className="card-content white-text">
             <span className="card-title">{title}</span>
-            <p className="description">{description}</p>
+            <p className="description ">{description}</p>
           </div>
           <div className="card-action">
             <a href="#">Results</a>
