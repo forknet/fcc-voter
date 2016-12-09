@@ -58,6 +58,22 @@ const validate = values => {
     errors.title = "Required Title"
   }
 
+  if(!values.description){
+    errors.description = "Don't forget to write something about your poll!"
+  }
+
+  if(!values.labelOptions){
+    errors.labelOptions = "Don't forget what options you want for users to vote for!"
+  }
+
+  if(values.labelOptions && values.labelOptions.split(/[,]+/).length < 2){
+    errors.labelOptions = "You need at least two options to make a poll!"
+  }
+
+  if(values.labelOptions && values.labelOptions.split(/[ ,]+/)[values.labelOptions.split(/[ ,]+/).length - 1] === ""){
+    errors.labelOptions = "One more option to go!"
+  }
+
   return errors;
 }
 
