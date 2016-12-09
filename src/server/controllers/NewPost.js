@@ -6,12 +6,12 @@ exports.newpost = function(req, res, next){
   console.log(req.body)
   const title = req.body.title;
   const description = req.body.description;
-  const labelOption = req.body.labelOption;
+  const labelOptions = req.body.labelOptions;
 
   const poll = new Poll({
     title: title,
     description: description,
-    labelOption: labelOption,
+    labelOptions: labelOptions,
     date: moment().format('MMM D, YYYY')
   });
 

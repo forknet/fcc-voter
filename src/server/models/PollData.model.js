@@ -4,7 +4,7 @@ const Schema = mongoose.Schema;
 const pollData = new Schema({
   title: String,
   description: String,
-  labelOption: String,
+  labelOptions: String,
   date: String
 })
 

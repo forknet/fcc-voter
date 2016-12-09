@@ -10,8 +10,8 @@ class NewPoll extends Component {
     this.onSubmit = this.onSubmit.bind(this)
   }
   onSubmit(props){
-    // console.log(this.props.castVote)
-    console.log(props)
+    console.log(props,'this is props')
+    this.props.newPoll(props)
   }
   render(){
     const { handleSubmit, submitting } = this.props
@@ -35,8 +35,8 @@ class NewPoll extends Component {
                 <label htmlFor="description">Description</label>
               </div>
               <div className="input-field col s12">
-                <Field name="notes" component="textarea"/>
-                <label htmlFor="textarea1">Options (seperated by line)</label>
+                <Field name="labelOptions" component="input" type="text"/>
+                <label htmlFor="textarea1">Options (seperated by comma)</label>
               </div>
               <div className="col input-field s12">
                 <button className="btn waves-effect waves-light" type="submit">Submit
