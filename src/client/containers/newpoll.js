@@ -15,7 +15,8 @@ class NewPoll extends Component {
     this.props.newPoll(props)
   }
   render(){
-    const { handleSubmit, submitting } = this.props
+    const { handleSubmit, submitting } = this.props;
+
     return(
       <main className="container">
         <div className="row">
@@ -25,19 +26,15 @@ class NewPoll extends Component {
         </div>
         <div className="row">
           <form onSubmit={handleSubmit(this.onSubmit)} className="col s12 m10">
-            <div className="row">
+            <div className="row browser-default">
               <div className="input-field col s12">
-                <i className="fa fa-pencil-square-o prefix"></i>
-                <Field name="title" component="input" type="text"/>
-                <label>Title Poll</label>
+                <Field name="title" label="Enter a Title" component={renderField} type="text"/>
               </div>
               <div className="input-field col s12">
-                <Field name="description" component="input" type="text"/>
-                <label htmlFor="description">Description</label>
+                <Field name="description" label="Enter a Description of Your Poll" component={renderField} type="text"/>
               </div>
               <div className="input-field col s12">
-                <Field name="labelOptions" component="input" type="text"/>
-                <label htmlFor="textarea1">Options (seperated by comma)</label>
+                <Field name="labelOptions" label="Options (seperated by comma)" component={renderField} type="text"/>
               </div>
               <div className="col input-field s12">
                 <button className="btn waves-effect waves-light" type="submit">Submit
@@ -55,10 +52,29 @@ class NewPoll extends Component {
   }
 }
 
-// export default NewPoll
+const validate = values => {
+  const errors = {};
+  if (!values.title){
+    errors.title = "Required Title"
+  }
+
+  return errors;
+}
+
+const renderField = ({ input, label, type, meta: { touched, error, warning } }) => (
+  <div>
+    <label>{label}</label>
+    <div>
+      <input {...input} placeholder={label} type={type}/>
+      {touched && (error && <div className="error">{error}</div>)}
+    </div>
+  </div>
+)
+
 
 NewPoll = reduxForm({
-  form: 'NewPoll'
+  form: 'NewPoll',
+  validate
 })(NewPoll)
 
 export default NewPoll = connect(null, actions)(NewPoll)
