@@ -3,10 +3,9 @@ const db =  "mongodb://localhost:voteapp/voteapp";
 const moment = require('moment');
 
 exports.newpost = function(req, res, next){
-  console.log(req.body)
   const title = req.body.title;
   const description = req.body.description;
-  const labelOptions = req.body.labelOptions;
+  const labelOptions = req.body.labelOptions.split(/,\s*/)
 
   const poll = new Poll({
     title: title,
