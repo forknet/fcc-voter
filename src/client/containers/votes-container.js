@@ -1,9 +1,11 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import * as actions from '../actions';
+import { Link } from 'react-router';
+const ROOT_URL = 'http://localhost:1234';
 
 class VotesContainer extends Component {
-  componentWillMount(){
+  componentDidMount(){
     this.props.fetchVotes()
   }
   renderCards({title, date, description, _id}){
@@ -15,7 +17,7 @@ class VotesContainer extends Component {
             <p className="description ">{description}</p>
           </div>
           <div className="card-action">
-            <a href="#">Results</a>
+            <Link to={`poll/${_id}`}>Result</Link>
             <a href="#">{date}</a>
           </div>
         </div>

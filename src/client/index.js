@@ -10,6 +10,7 @@ import App from './components/app';
 import VotesContainer from './containers/votes-container';
 import NewPoll from './containers/newpoll';
 import VoteTemplate from './components/vote-template';
+import Poll from './components/poll';
 import Login from './components/auth/login';
 import Signup from './components/auth/signup';
 import reducers from './reducers/';
@@ -27,6 +28,7 @@ ReactDOM.render(
         <Route path="login" component={Login} />
         <Route path="signup" component={Signup} />
         <Route path="newpoll" component={NewPoll} />
+        <Route path="poll/:id" component={Poll} />
       </Route>
     </Router>
   </Provider>

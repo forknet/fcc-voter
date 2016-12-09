@@ -10,16 +10,26 @@ import * as actions from '../actions/';
 class VoteTemplate extends Component {
   constructor(props) {
     super(props);
+    this.onSubmit = this.onSubmit.bind(this)
+  }
+  componentDidMount(){
+    this.props.fetchPoll(this.props.params.id)
+  }
+  onSubmit(props){
+    this.props.castVote(props)
+  }
+
+  renderPollGraph(){
     const data = {
-      labels: ["January", "February", "March", "April", "May", "June"],
+      labels: ["January", "February"],
       datasets: [
         {
           labels: ['01', '02', '03', '05', '06', '09'],
-          fillColor: ["rgba(220,220,220,0.5)", "navy", "red", "orange", "blue", "yellow"],
+          fillColor: ["rgba(220,220,220,0.5)", "navy"],
           strokeColor: "rgba(220,220,220,0.8)",
           highlightFill: "rgba(7, 122, 102, 0.75)",
           highlightStroke: "rgb(176, 0, 52)",
-          data: [1,2,3,4,5,6]
+          data: [1,2]
         }
       ]
     };
@@ -34,14 +44,18 @@ class VoteTemplate extends Component {
       chartData: data,
       chartOptions: options
     };
-    this.onSubmit = this.onSubmit.bind(this)
   }
-  onSubmit(props){
-    // console.log(this.props.castVote)
-    this.props.castVote(props)
+
+  renderRadioButtons(pollLabels){
+    let labelOption = Object.keys(pollLabels)[0]
+    return(
+      <p key={labelOption}>
+        <Field name="category" component="input" type="radio" className="radio-button-css" value={labelOption}/>
+        <label>{labelOption}</label>
+      </p>
+    )
   }
   render() {
-    console.log(this.props.params)
     const { chartData, chartOptions } = this.state;
     const { handleSubmit, submitting } = this.props
     return (
@@ -55,14 +69,7 @@ class VoteTemplate extends Component {
         <form onSubmit={handleSubmit(this.onSubmit)}>
           <div className="row">
             <div className="col s12">
-              <p>
-                <Field name="category" component="input" type="radio" className="radio-button-css" value="male"/>
-                <label>Male</label>
-              </p>
-              <p>
-                <Field name="category" component="input" type="radio" className="radio-button-css" value="female"/>
-                <label>Female</label>
-              </p>
+              {(this.props.voteData.pollInfo.labelOptions || []).map(this.renderRadioButtons)}
             </div>
             <div className="col input-field s12">
               <button className="btn waves-effect waves-light" type="submit" disabled={submitting}>Submit
@@ -79,12 +86,12 @@ class VoteTemplate extends Component {
   }
 }
 
-// export default reduxForm({
-//   form: 'CastVote'
-// }, null, actions )(VoteTemplate)
+function mapStateToProps(state){
+  return {voteData: state.voteData};
+}
 
 VoteTemplate = reduxForm({
   form: 'CastVote'
 })(VoteTemplate)
 
-export default VoteTemplate = connect(null, actions)(VoteTemplate)
+export default VoteTemplate = connect(mapStateToProps, actions)(VoteTemplate)

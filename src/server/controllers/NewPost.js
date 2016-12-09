@@ -5,7 +5,11 @@ const moment = require('moment');
 exports.newpost = function(req, res, next){
   const title = req.body.title;
   const description = req.body.description;
-  const labelOptions = req.body.labelOptions.split(/,\s*/)
+  const labelOptions = req.body.labelOptions.split(/,\s*/).map( option =>{
+    let rObj = {};
+    rObj[option] = 0;
+    return rObj;
+  })
 
   const poll = new Poll({
     title: title,
@@ -22,7 +26,6 @@ exports.newpost = function(req, res, next){
 
 exports.getpost = function(req, res, next){
   Poll.find({}, function(err, data){
-    console.log(data, 'is this what you are looking for?')
     res.send(data)
   })
 }

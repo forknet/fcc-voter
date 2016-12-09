@@ -11,7 +11,6 @@ class NewPoll extends Component {
     this.onSubmit = this.onSubmit.bind(this)
   }
   onSubmit(props){
-    console.log(props,'this is props')
     this.props.newPoll(props)
   }
   render(){
@@ -71,7 +70,7 @@ const validate = values => {
   }
 
   if(values.labelOptions && values.labelOptions.split(/[ ,]+/)[values.labelOptions.split(/[ ,]+/).length - 1] === ""){
-    errors.labelOptions = "One more option to go!"
+    errors.labelOptions = "Incomplete Fill"
   }
 
   return errors;
