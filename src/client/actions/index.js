@@ -40,10 +40,15 @@ export function newPoll({title, description, labelOptions}){
   }
 }
 
-export function castVote(props){
-  console.log(props)
-  return {
-    type: CAST_VOTE,
-    payload: props
+export function castVote(id, {labelOption}){
+  console.log(labelOption)
+  const request = axios.put(`${ROOT_URL}/polls/${id}?labelOption=${labelOption}`)
+  return (dispatch) => {
+    request.then( ({data}) => {
+      dispatch({ type: CAST_VOTE, payload })
+    })
+    .catch(function (error){
+      console.log(error)
+    })
   }
 }

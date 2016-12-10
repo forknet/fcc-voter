@@ -16,36 +16,33 @@ class VoteTemplate extends Component {
     this.props.fetchPoll(this.props.params.id)
   }
   onSubmit(props){
-    this.props.castVote(props)
+    let _id = this.props.params.id;
+    this.props.castVote(_id, props)
   }
-  renderRadioButtons(pollLabels){
-    let labelOption = Object.keys(pollLabels)[0]
+  renderRadioButtons(labelOption){
+    // let labelOption = Object.keys(pollLabels)[0]
     return(
       <p key={labelOption}>
-        <Field name="category" component="input" type="radio" className="radio-button-css" value={labelOption}/>
+        <Field name="labelOption" component="input" type="radio" className="radio-button-css" value={labelOption}/>
         <label>{labelOption}</label>
       </p>
     )
   }
-  // renderBarGraph(){
-  //   if (!optionLabels){
-  //     return <div>Loading</div>
-  //   } else{
-  //     return(
-  //       <BarChart data={chartData} options={chartOptions}/>
-  //     )
-  //   }
-  // }
   render() {
+    // console.log(this.props.voteData.pollInfo.labelOptions)
     let optionLabels, optionCount;
     if(this.props.voteData.pollInfo.length !== 0){
-      optionLabels = this.props.voteData.pollInfo.labelOptions.reduce((init,accum) =>{
-        return Object.keys(accum).concat(init)
-      },[])
+      // optionLabels = this.props.voteData.pollInfo.labelOptions.reduce((init,accum) =>{
+      //   return Object.keys(accum).concat(init)
+      // },[])
+      console.log(this.props.voteData.pollInfo.labelOptions)
+      optionLabels = Object.keys(this.props.voteData.pollInfo.labelOptions);
+      optionCount = Object.values(this.props.voteData.pollInfo.labelOptions);
 
-      optionCount = this.props.voteData.pollInfo.labelOptions.reduce((init,accum) =>{
-        return Object.values(accum).concat(init)
-      },[])
+      console.log(optionLabels)
+      // optionCount = this.props.voteData.pollInfo.labelOptions.reduce((init,accum) =>{
+      //   return Object.values(accum).concat(init)
+      // },[])
     }
     const chartData = {
       labels: optionLabels || [],
@@ -87,7 +84,7 @@ class VoteTemplate extends Component {
         <form onSubmit={handleSubmit(this.onSubmit)}>
           <div className="row">
             <div className="col s12">
-              {(this.props.voteData.pollInfo.labelOptions || []).map(this.renderRadioButtons)}
+              {(optionLabels || []).map(this.renderRadioButtons)}
             </div>
             <div className="col input-field s12">
               <button className="btn waves-effect waves-light" type="submit" disabled={submitting}>Submit

@@ -1,5 +1,6 @@
 const NewPost = require('./controllers/NewPost');
 const GetPoll = require('./controllers/GetPoll');
+const CastVote = require('./controllers/CastVote');
 
 module.exports = function(app){
   app.get('/', function(req, res){
@@ -9,4 +10,5 @@ module.exports = function(app){
   app.get('/newpost', NewPost.getpost)
 
   app.get('/polls/:id', GetPoll.getpost)
+  app.put('/polls/:id', CastVote.update)
 }

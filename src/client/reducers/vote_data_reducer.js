@@ -9,6 +9,7 @@ export default function(state=INITIAL, action){
     case FETCH_POLL:
       return {...state, pollInfo: action.payload}
     case CAST_VOTE:
+      console.log('casted a vote')
       return { ...state, castvote: action.payload}
     case NEW_POLL:
       return { ...state}
