@@ -17,9 +17,9 @@ exports.newpost = function(req, res, next){
     date: moment().format('MMM D, YYYY')
   });
 
-  poll.save(function(err) {
+  poll.save(function(err, document) {
     if (err) { return next(err); }
-    res.json({ message : 'Poll added!'})
+    res.json({id: document._id})
   });
 }
 

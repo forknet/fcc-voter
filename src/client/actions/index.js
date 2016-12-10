@@ -32,7 +32,8 @@ export function newPoll({title, description, labelOptions}){
   return (dispatch) =>{
     request.then(({data}) =>{
       dispatch({ type: NEW_POLL, payload: data})
-      browserHistory.push('/allposts')
+      console.log(data)
+      browserHistory.push(`/poll/${data.id}`)
     })
     .catch(function (error) {
       console.log(error);
@@ -41,12 +42,13 @@ export function newPoll({title, description, labelOptions}){
 }
 
 export function castVote(id, {labelOption}){
-  let timeDelay = 1200;
+  let timeDelay = 900;
   const request = axios.put(`${ROOT_URL}/polls/${id}?labelOption=${labelOption}`)
   return (dispatch) => {
     request.then( ({data}) => {
       dispatch({ type: CAST_VOTE, payload: data })
       Materialize.toast('Thanks for casting your Vote!', timeDelay, '', ()=> window.location.reload())
+      // Materialize.toast('Thanks for casting your Vote!', timeDelay, '', ()=> window.location.reload())
     })
     .catch(function (error){
       console.log(error)
