@@ -32,17 +32,8 @@ class VoteTemplate extends Component {
     // console.log(this.props.voteData.pollInfo.labelOptions)
     let optionLabels, optionCount;
     if(this.props.voteData.pollInfo.length !== 0){
-      // optionLabels = this.props.voteData.pollInfo.labelOptions.reduce((init,accum) =>{
-      //   return Object.keys(accum).concat(init)
-      // },[])
-      console.log(this.props.voteData.pollInfo.labelOptions)
       optionLabels = Object.keys(this.props.voteData.pollInfo.labelOptions);
       optionCount = Object.values(this.props.voteData.pollInfo.labelOptions);
-
-      console.log(optionLabels)
-      // optionCount = this.props.voteData.pollInfo.labelOptions.reduce((init,accum) =>{
-      //   return Object.values(accum).concat(init)
-      // },[])
     }
     const chartData = {
       labels: optionLabels || [],
@@ -66,12 +57,10 @@ class VoteTemplate extends Component {
       scaleFontSize: 15
     };
     const { handleSubmit, submitting } = this.props
-    let kenzo = (optionLabels) ? true : false;
+    let asyncData = (optionLabels) ? true : false; //sets true when the fetched data is retrieved
     let graph = null
-    if(kenzo){
-      optionLabels.reverse();
+    if(asyncData){
       graph = <BarChart data={chartData} options={chartOptions}/>
-
     }
     return (
       <main className="welcome container">

@@ -4,22 +4,16 @@ const db =  "mongodb://localhost:voteapp/voteapp";
 exports.update = function(req, res, next){
   let id = req.params.id;
   let labelOption = req.query.labelOption;
-  console.log(id)
-  Poll.findOneAndUpdate(
-    {'_id' :  id},
-    {$inc: {"labelOptions.$.Kenzo": 1 }},
-    function(err){
+  let query =  `labelOptions.${labelOption}`
+  let obj = {
+    [query] : 1
+  }
+  Poll.findByIdAndUpdate(
+    id,
+    {$inc: obj },
+    function(err, document){
       console.log(err)
-    })
-
-
-    // poll["labelOptions"].forEach( prop =>{
-    //   if(prop[labelOption]){
-    //     console.log(prop)
-    //     console.log(labelOption)
-    //     // $set: { name: 'jason borne' }
-    //     // {$inc: {labelOption:1}}
-    //   }
-    // })
-
+      console.log(document)
+    }
+  )
 }

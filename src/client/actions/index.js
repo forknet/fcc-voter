@@ -41,7 +41,6 @@ export function newPoll({title, description, labelOptions}){
 }
 
 export function castVote(id, {labelOption}){
-  console.log(labelOption)
   const request = axios.put(`${ROOT_URL}/polls/${id}?labelOption=${labelOption}`)
   return (dispatch) => {
     request.then( ({data}) => {
