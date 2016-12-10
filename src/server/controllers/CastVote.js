@@ -12,8 +12,8 @@ exports.update = function(req, res, next){
     id,
     {$inc: obj },
     function(err, document){
-      console.log(err)
-      console.log(document)
+      if (err) { console.log(err)}
+      res.send(document)
     }
   )
 }

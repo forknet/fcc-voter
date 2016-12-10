@@ -10,17 +10,20 @@ import * as actions from '../actions/';
 class VoteTemplate extends Component {
   constructor(props) {
     super(props);
-    this.onSubmit = this.onSubmit.bind(this)
+    this.onSubmit = this.onSubmit.bind(this);
+    this.state ={
+      updateCastVote: []
+    }
   }
   componentWillMount(){
     this.props.fetchPoll(this.props.params.id)
   }
+
   onSubmit(props){
     let _id = this.props.params.id;
     this.props.castVote(_id, props)
   }
   renderRadioButtons(labelOption){
-    // let labelOption = Object.keys(pollLabels)[0]
     return(
       <p key={labelOption}>
         <Field name="labelOption" component="input" type="radio" className="radio-button-css" value={labelOption}/>
@@ -29,7 +32,6 @@ class VoteTemplate extends Component {
     )
   }
   render() {
-    // console.log(this.props.voteData.pollInfo.labelOptions)
     let optionLabels, optionCount;
     if(this.props.voteData.pollInfo.length !== 0){
       optionLabels = Object.keys(this.props.voteData.pollInfo.labelOptions);

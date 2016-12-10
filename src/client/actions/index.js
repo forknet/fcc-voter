@@ -41,10 +41,12 @@ export function newPoll({title, description, labelOptions}){
 }
 
 export function castVote(id, {labelOption}){
+  let timeDelay = 1200;
   const request = axios.put(`${ROOT_URL}/polls/${id}?labelOption=${labelOption}`)
   return (dispatch) => {
     request.then( ({data}) => {
-      dispatch({ type: CAST_VOTE, payload })
+      dispatch({ type: CAST_VOTE, payload: data })
+      Materialize.toast('Thanks for casting your Vote!', timeDelay, '', ()=> window.location.reload())
     })
     .catch(function (error){
       console.log(error)
