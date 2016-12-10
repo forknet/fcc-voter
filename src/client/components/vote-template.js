@@ -11,7 +11,7 @@ class VoteTemplate extends Component {
   constructor(props) {
     super(props);
     const data = {
-      labels: ["January", "February", "March", "April", "May", "June"],
+      labels: ["January", "February", "March"],
       datasets: [
         {
           labels: ['01', '02', '03', '05', '06', '09'],
@@ -19,7 +19,7 @@ class VoteTemplate extends Component {
           strokeColor: "rgba(220,220,220,0.8)",
           highlightFill: "rgba(7, 122, 102, 0.75)",
           highlightStroke: "rgb(176, 0, 52)",
-          data: [1,2,3,4,5,6]
+          data: [1,2,3]
         }
       ]
     };
@@ -41,7 +41,6 @@ class VoteTemplate extends Component {
     this.props.castVote(props)
   }
   render() {
-    console.log(this.props.params)
     const { chartData, chartOptions } = this.state;
     const { handleSubmit, submitting } = this.props
     return (

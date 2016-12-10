@@ -5,7 +5,7 @@ const INITIAL = { vote: [], pollInfo: []}
 export default function(state=INITIAL, action){
   switch (action.type) {
     case FETCH_VOTES:
-      return {...state, vote: action.payload}
+      return {...state, vote: action.payload, pollInfo: []}
     case FETCH_POLL:
       return {...state, pollInfo: action.payload}
     case CAST_VOTE:

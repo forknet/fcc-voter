@@ -12,40 +12,12 @@ class VoteTemplate extends Component {
     super(props);
     this.onSubmit = this.onSubmit.bind(this)
   }
-  componentDidMount(){
+  componentWillMount(){
     this.props.fetchPoll(this.props.params.id)
   }
   onSubmit(props){
     this.props.castVote(props)
   }
-
-  renderPollGraph(){
-    const data = {
-      labels: ["January", "February"],
-      datasets: [
-        {
-          labels: ['01', '02', '03', '05', '06', '09'],
-          fillColor: ["rgba(220,220,220,0.5)", "navy"],
-          strokeColor: "rgba(220,220,220,0.8)",
-          highlightFill: "rgba(7, 122, 102, 0.75)",
-          highlightStroke: "rgb(176, 0, 52)",
-          data: [1,2]
-        }
-      ]
-    };
-    const options = {
-      barStrokeWidth : 3,
-      scaleGridLineWidth : 4,
-      scaleShowVerticalLines: false,
-      responsive: true,
-      scaleFontSize: 15
-    };
-    this.state = {
-      chartData: data,
-      chartOptions: options
-    };
-  }
-
   renderRadioButtons(pollLabels){
     let labelOption = Object.keys(pollLabels)[0]
     return(
@@ -55,17 +27,63 @@ class VoteTemplate extends Component {
       </p>
     )
   }
+  // renderBarGraph(){
+  //   if (!optionLabels){
+  //     return <div>Loading</div>
+  //   } else{
+  //     return(
+  //       <BarChart data={chartData} options={chartOptions}/>
+  //     )
+  //   }
+  // }
   render() {
-    const { chartData, chartOptions } = this.state;
+    let optionLabels, optionCount;
+    if(this.props.voteData.pollInfo.length !== 0){
+      optionLabels = this.props.voteData.pollInfo.labelOptions.reduce((init,accum) =>{
+        return Object.keys(accum).concat(init)
+      },[])
+
+      optionCount = this.props.voteData.pollInfo.labelOptions.reduce((init,accum) =>{
+        return Object.values(accum).concat(init)
+      },[])
+    }
+    const chartData = {
+      labels: optionLabels || [],
+      datasets: [
+        {
+          labels: ['01', '02', '03', '05', '06', '09'],
+          fillColor: ['orange', 'skyblue', 'red'],
+          strokeColor: "rgba(220,220,220,0.8)",
+          highlightFill: "rgba(7, 122, 102, 0.75)",
+          highlightStroke: "rgb(176, 0, 52)",
+          data: optionCount || []
+        }
+      ]
+    };
+
+    const chartOptions = {
+      barStrokeWidth : 3,
+      scaleGridLineWidth : 4,
+      scaleShowVerticalLines: false,
+      responsive: true,
+      scaleFontSize: 15
+    };
     const { handleSubmit, submitting } = this.props
+    let kenzo = (optionLabels) ? true : false;
+    let graph = null
+    if(kenzo){
+      optionLabels.reverse();
+      graph = <BarChart data={chartData} options={chartOptions}/>
+
+    }
     return (
       <main className="welcome container">
         <div className="row">
           <div className="col center-align s12">
-            <h3>Title of the Poll</h3>
+            <h3>{this.props.voteData.pollInfo.title || ''}</h3>
           </div>
         </div>
-        <BarChart data={chartData} options={chartOptions}/>
+        {graph}
         <form onSubmit={handleSubmit(this.onSubmit)}>
           <div className="row">
             <div className="col s12">
