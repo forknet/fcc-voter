@@ -11,7 +11,8 @@ class Signup extends Component {
     this.onSubmit = this.onSubmit.bind(this)
   }
   onSubmit(props){
-    conosle.log('action!!!')
+    console.log('action!')
+    console.log(props)
     // this.props.newPoll(props)
   }
   render(){
