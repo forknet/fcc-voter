@@ -3,7 +3,7 @@ const Schema = mongoose.Schema;
 const bcrypt = require('bcrypt-nodejs');
 
 const userSchema = new Schema({
-  username: String,
+  userName: String,
   email: {
     type: String,
     unique: true,
@@ -12,6 +12,7 @@ const userSchema = new Schema({
   password: String
 })
 
+//Using bcrypt to encrypt our uses's password
 userSchema.pre('save', function(next){
   const user = this; // access to user model (it is instance of user Model)
 
@@ -31,4 +32,4 @@ userSchema.pre('save', function(next){
 });
 
 
-module.exports = mongoose.model('user', userSchema)
+module.exports = mongoose.model('User', userSchema)
