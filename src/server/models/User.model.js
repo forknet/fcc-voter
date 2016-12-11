@@ -31,5 +31,15 @@ userSchema.pre('save', function(next){
   })
 });
 
+//extend another method for comparing password (LocalStrategy)
+userSchema.methods.comparePassword = function(candidatePassword, callback){
+  let userDataPassword = this.password; // the actual encrypted password in db
+  //bcrypt.compare allows us to compare candidatePassword and userDataPassword to see if matched
+  bcrypt.compare(candidatePassword, userDataPassword, function(err, isMatch) {
+    if (err) { return callback(err)}
+    callback(null, isMatch)
+  })
+}
+
 
 module.exports = mongoose.model('User', userSchema)

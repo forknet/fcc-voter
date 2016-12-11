@@ -4,8 +4,14 @@ const CastVote = require('./controllers/CastVote');
 
 const Authentication = require('./controllers/authentication');
 
+const passportService = require('./services/passport'); // source of Middleware for passport
+const passport = require('passport');
+
+const requireAuth = passport.authenticate('jwt', { session: false }); //middleWare
+const requireSignIn = passport.authenticate('local', { session: false });
+
 module.exports = function(app){
-  app.get('/', function(req, res){
+  app.get('/', requireAuth, function(req, res){
     res.send({message: 'Super secret code is ABC123'})
   })
   app.post('/newpost', NewPost.newpost)
@@ -15,4 +21,5 @@ module.exports = function(app){
   app.put('/polls/:id', CastVote.update)
 
   app.post('/signup', Authentication.signup)
+  app.post('/signin', requireSignIn,  Authentication.signin)
 }
