@@ -65,7 +65,7 @@ class VoteTemplate extends Component {
       graph = <BarChart data={chartData} options={chartOptions}/>
     }
     return (
-      <main className="welcome container">
+      <main className="container">
         <div className="row">
           <div className="col center-align s12">
             <h3>{this.props.voteData.pollInfo.title || ''}</h3>
