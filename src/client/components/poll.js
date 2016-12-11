@@ -58,7 +58,7 @@ class VoteTemplate extends Component {
       responsive: true,
       scaleFontSize: 15
     };
-    const { handleSubmit, submitting } = this.props
+    const { handleSubmit, pristine, reset, submitting } = this.props
     let asyncData = (optionLabels) ? true : false; //sets true when the fetched data is retrieved
     let graph = null
     if(asyncData){
@@ -78,7 +78,7 @@ class VoteTemplate extends Component {
               {(optionLabels || []).map(this.renderRadioButtons)}
             </div>
             <div className="col input-field s12">
-              <button className="btn waves-effect waves-light" type="submit" disabled={submitting}>Submit
+              <button className="btn" type="submit" disabled={pristine || submitting}>Submit
                 <i className="fa fa-paper-plane-o"></i>
               </button>
               <Link to="/allposts" className="btn waves-effect waves-light cancel-btn">Cancel
