@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import NavBar from '../containers/navbar';
-import VotesContainer from '../containers/votes-container';
 import Footer from './footer';
 import '../stylesheets/style.scss';
 

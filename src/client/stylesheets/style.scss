@@ -1,5 +1,6 @@
 $style-blue : #5c6fc5;
 $alert-color: #FF4081;
+$welcome-color: #EEEEEE;
 
 #app {
   display: flex;
@@ -10,6 +11,7 @@ $alert-color: #FF4081;
 main {
   flex: 1 0 auto;
 }
+
 
 .nav-right{
   li{
@@ -26,6 +28,14 @@ main {
   label{
     visibility: hidden;
   }
+}
+
+.votes-container{
+  margin-top: 8px;
+}
+
+.welcome{
+  background: $welcome-color;
 }
 
 .error{
