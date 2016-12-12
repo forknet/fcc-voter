@@ -5,13 +5,14 @@ import { Link } from 'react-router';
 class NavBar extends Component {
   renderLinks(){
     if (this.props.authenticated){
-      console.log('why')
-      // show a link to sign out
       return [
+        <li className="my-polls" key={3}>
+          <Link to="/">My Polls</Link>
+        </li>,
         <li className="newpoll" key={1}>
           <Link to="/newpoll">Add New Poll</Link>
         </li>,
-        <li className="nav-item" key={2}>
+        <li className="signout" key={2}>
           <Link to="/signout">Sign Out</Link>
         </li>
       ]
