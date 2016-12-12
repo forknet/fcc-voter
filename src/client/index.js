@@ -6,6 +6,8 @@ import { Router, Route, IndexRoute, browserHistory } from 'react-router';
 import thunk from 'redux-thunk';
 import promise from 'redux-promise';
 
+import RequireAuth from './components/auth/require_auth';
+
 import App from './components/app';
 import Home from './containers/home';
 import MyPolls from './containers/mypolls';
@@ -36,8 +38,8 @@ ReactDOM.render(
         <Route path="login" component={Login} />
         <Route path="signup" component={Signup} />
         <Route path="signout" component={Signout} />
-        <Route path="newpoll" component={NewPoll} />
-        <Route path="mypolls" component={MyPolls} />
+        <Route path="newpoll" component={RequireAuth(NewPoll)} />
+        <Route path="mypolls" component={RequireAuth(MyPolls)} />
         <Route path="poll/:id" component={Poll} />
       </Route>
     </Router>
