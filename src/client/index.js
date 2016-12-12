@@ -8,6 +8,7 @@ import promise from 'redux-promise';
 
 import App from './components/app';
 import Home from './containers/home';
+import MyPolls from './containers/mypolls';
 import NewPoll from './containers/newpoll';
 import Poll from './components/poll';
 import Login from './components/auth/login';
@@ -36,6 +37,7 @@ ReactDOM.render(
         <Route path="signup" component={Signup} />
         <Route path="signout" component={Signout} />
         <Route path="newpoll" component={NewPoll} />
+        <Route path="mypolls" component={MyPolls} />
         <Route path="poll/:id" component={Poll} />
       </Route>
     </Router>

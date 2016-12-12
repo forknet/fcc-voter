@@ -8,7 +8,7 @@ class NavBar extends Component {
     if (this.props.authenticated){
       return [
         <li className="my-polls" key={3}>
-          <Link to="/">{userName} Polls</Link>
+          <Link to="/myPolls">{userName} Polls</Link>
         </li>,
         <li className="newpoll" key={1}>
           <Link to="/newpoll">Add New Poll</Link>
