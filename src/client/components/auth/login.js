@@ -11,9 +11,7 @@ class Login extends Component {
     this.onSubmit = this.onSubmit.bind(this)
   }
   onSubmit(props){
-    console.log('action!')
-    console.log(props)
-    // this.props.newPoll(props)
+    this.props.loginUser(props)
   }
   render(){
     const { handleSubmit, submitting } = this.props;
@@ -81,4 +79,4 @@ Login = reduxForm({
   validate
 })(Login)
 
-export default Login
+export default Login = connect(null, actions)(Login)

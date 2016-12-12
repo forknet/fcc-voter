@@ -51,22 +51,41 @@ export function castVote(id, {labelOption}){
       Materialize.toast('Thanks for casting your Vote!', timeDelay, '', ()=> window.location.reload())
     })
     .catch(function (error){
-      console.log(error)
+      Materialize.toast('Sorry, something went wrong :( ...', timeDelay)
     })
   }
 }
 
-export function signupUser( {userName, email, password}){
-
+export function loginUser( {email, password}){
+  let timeDelay = 4000;
   return function(dispatch){
-    axios.post(`${ROOT_URL}/signup`, { userName, email, password })
+    axios.post(`${ROOT_URL}/signin`, {email, password})
+      .then(response =>{
+        dispatch({type: AUTH_USER})
+        localStorage.setItem('token', response.data.token)
+        browserHistory.push('/')
+        Materialize.toast(`Welcome back ${response.data.userName}!`, timeDelay)
+      })
+      .catch(() =>{
+        // If request is bad...
+        // -Show an error to the user
+        Materialize.toast('Ooops! Wrong email/password!', timeDelay)
+      });
+  }
+}
+
+export function signupUser( {userName, email, password}){
+  let timeDelay = 4000;
+  return function(dispatch){
+    axios.post(`${ROOT_URL}/signup`, { userName, email, password})
       .then(response =>{
         dispatch({type: AUTH_USER})
         localStorage.setItem('token', response.data.token);
         browserHistory.push('/')
+        Materialize.toast(`Welcome ${response.data.userName}!`, timeDelay)
       })
       .catch(response =>{
-        dispatch(authError(response.data.error))
+        Materialize.toast('Ooops! Try again!', timeDelay)
       })
   }
 }
