@@ -61,8 +61,9 @@ export function loginUser( {email, password}){
   return function(dispatch){
     axios.post(`${ROOT_URL}/signin`, {email, password})
       .then(response =>{
-        dispatch({type: AUTH_USER})
+        dispatch({type: AUTH_USER, payload: response.data.userName})
         localStorage.setItem('token', response.data.token)
+        localStorage.setItem('userName', response.data.userName)
         browserHistory.push('/')
         Materialize.toast(`Welcome back ${response.data.userName}!`, timeDelay)
       })
@@ -79,8 +80,9 @@ export function signupUser( {userName, email, password}){
   return function(dispatch){
     axios.post(`${ROOT_URL}/signup`, { userName, email, password})
       .then(response =>{
-        dispatch({type: AUTH_USER})
+        dispatch({type: AUTH_USER, payload: response.data.userName})
         localStorage.setItem('token', response.data.token);
+        localStorage.setItem('userName', response.data.userName);
         browserHistory.push('/')
         Materialize.toast(`Welcome ${response.data.userName}!`, timeDelay)
       })
@@ -93,6 +95,7 @@ export function signupUser( {userName, email, password}){
 export function signoutUser(){
   let timeDelay = 900;
   localStorage.removeItem('token')
+  localStorage.removeItem('userName')
   return ({
     type: UNAUTH_USER
   })

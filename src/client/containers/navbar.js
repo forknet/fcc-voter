@@ -4,10 +4,11 @@ import { Link } from 'react-router';
 
 class NavBar extends Component {
   renderLinks(){
+    let userName = this.props.userName
     if (this.props.authenticated){
       return [
         <li className="my-polls" key={3}>
-          <Link to="/">My Polls</Link>
+          <Link to="/">{userName} Polls</Link>
         </li>,
         <li className="newpoll" key={1}>
           <Link to="/newpoll">Add New Poll</Link>
@@ -44,7 +45,8 @@ class NavBar extends Component {
 
 function mapStateToProps(state){
   return {
-    authenticated: state.auth.authenticated
+    authenticated: state.auth.authenticated,
+    userName: state.auth.userName
   }
 }
 

@@ -5,7 +5,9 @@ const INITIAL = {}
 export default function(state = INITIAL, action){
   switch (action.type) {
     case AUTH_USER:
-      return {...state, error: '', authenticated: true}
+      // this ensures that user can see whose account is currently logged in
+      let currentUser = localStorage.getItem('userName')
+      return { ...state, authenticated: true, userName: action.payload || currentUser }
     case UNAUTH_USER:
       return { ...state, authenticated: false}
   }
