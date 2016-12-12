@@ -15,9 +15,17 @@ import Signup from './components/auth/signup';
 import Signout from './components/auth/signout';
 import reducers from './reducers/';
 
+import { AUTH_USER } from './actions/types'
+
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 
 const store = createStore(reducers, composeEnhancers(applyMiddleware(thunk)))
+
+const token = localStorage.getItem('token');
+
+if(token) {
+  store.dispatch( {type: AUTH_USER} );
+}
 
 ReactDOM.render(
   <Provider store={store}>
