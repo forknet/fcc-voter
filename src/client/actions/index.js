@@ -1,7 +1,8 @@
 import axios from 'axios';
 const ROOT_URL = 'http://localhost:1234';
 import { browserHistory } from 'react-router';
-import { FETCH_VOTES, FETCH_POLL, CAST_VOTE, NEW_POLL } from './types';
+import { FETCH_VOTES, FETCH_POLL, CAST_VOTE, NEW_POLL ,
+  AUTH_USER, AUTH_ERROR, UNAUTH_USER, FETCH_MESSAGE} from './types';
 
 export function fetchVotes(){
   const request = axios.get(`${ROOT_URL}/newpost`);
@@ -54,3 +55,29 @@ export function castVote(id, {labelOption}){
     })
   }
 }
+
+export function signupUser( {userName, email, password}){
+
+  return function(dispatch){
+    axios.post(`${ROOT_URL}/signup`, { userName, email, password })
+      .then(response =>{
+        dispatch({type: AUTH_USER})
+        localStorage.setItem('token', response.data.token);
+        browserHistory.push('/')
+      })
+      .catch(response =>{
+        dispatch(authError(response.data.error))
+      })
+  }
+}
+
+export function signoutUser(){
+  let timeDelay = 900;
+  localStorage.removeItem('token')
+  return ({
+    type: UNAUTH_USER
+  })
+  // Materialize.toast('See ya next time!', timeDelay, '', browserHistory.push('/') )
+}
+
+// Materialize.toast('Thanks for casting your Vote!', timeDelay, '', ()=> window.location.reload())

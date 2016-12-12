@@ -11,13 +11,10 @@ class Signup extends Component {
     this.onSubmit = this.onSubmit.bind(this)
   }
   onSubmit(props){
-    console.log('action!')
-    console.log(props)
-    // this.props.newPoll(props)
+    this.props.signupUser(props)
   }
   render(){
     const { handleSubmit, submitting } = this.props;
-
     return(
       <main className="login container">
         <div className="row">
@@ -97,4 +94,4 @@ Signup = reduxForm({
   validate
 })(Signup)
 
-export default Signup
+export default Signup = connect(null, actions)(Signup)

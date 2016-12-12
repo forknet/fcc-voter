@@ -12,6 +12,7 @@ import NewPoll from './containers/newpoll';
 import Poll from './components/poll';
 import Login from './components/auth/login';
 import Signup from './components/auth/signup';
+import Signout from './components/auth/signout';
 import reducers from './reducers/';
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
@@ -25,6 +26,7 @@ ReactDOM.render(
         <IndexRoute component={Home} />
         <Route path="login" component={Login} />
         <Route path="signup" component={Signup} />
+        <Route path="signout" component={Signout} />
         <Route path="newpoll" component={NewPoll} />
         <Route path="poll/:id" component={Poll} />
       </Route>

@@ -1,7 +1,13 @@
-import { FETCH_VOTES, FETCH_POLL, CAST_VOTE, NEW_POLL } from '../actions/types'
+import { AUTH_USER ,UNAUTH_USER, AUTH_ERROR, FETCH_MESSAGE } from '../actions/types'
 
-const INITIAL = {authenticated: false}
+const INITIAL = {}
 
-export default function(state= INITIAL, action){
+export default function(state = INITIAL, action){
+  switch (action.type) {
+    case AUTH_USER:
+      return {...state, error: '', authenticated: true}
+    case UNAUTH_USER:
+      return { ...state, authenticated: false}
+  }
   return state;
 }

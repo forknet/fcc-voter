@@ -29,7 +29,6 @@ class NavBar extends Component {
     }
   }
   render(){
-    console.log(this.props.authenticated)
     return(
       <nav className="nav-wrapper">
         <div className="nav-wrapper container">
