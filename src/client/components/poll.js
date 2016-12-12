@@ -81,7 +81,7 @@ class VoteTemplate extends Component {
               <button className="btn" type="submit" disabled={pristine || submitting}>Submit
                 <i className="fa fa-paper-plane-o"></i>
               </button>
-              <Link to="/allposts" className="btn waves-effect waves-light cancel-btn">Cancel
+              <Link to="/" className="btn waves-effect waves-light cancel-btn">Cancel
                 <i className="fa fa-times"></i>
               </Link>
             </div>
