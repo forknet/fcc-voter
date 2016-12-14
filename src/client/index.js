@@ -15,7 +15,6 @@ import NewPoll from './containers/newpoll';
 import Poll from './components/poll';
 import Login from './components/auth/login';
 import Signup from './components/auth/signup';
-import Signout from './components/auth/signout';
 import reducers from './reducers/';
 
 import { AUTH_USER } from './actions/types'
@@ -37,7 +36,6 @@ ReactDOM.render(
         <IndexRoute component={Home} />
         <Route path="login" component={Login} />
         <Route path="signup" component={Signup} />
-        <Route path="signout" component={Signout} />
         <Route path="newpoll" component={RequireAuth(NewPoll)} />
         <Route path="mypolls" component={RequireAuth(MyPolls)} />
         <Route path="poll/:id" component={Poll} />
