@@ -5,7 +5,7 @@ import { FETCH_VOTES, FETCH_POLL, CAST_VOTE, NEW_POLL ,
   AUTH_USER, AUTH_ERROR, UNAUTH_USER, FETCH_MESSAGE } from './types';
 
 export function fetchVotes(){
-  const request = axios.get(`${ROOT_URL}/newpost`);
+  const request = axios.get(`${ROOT_URL}/fetchvotes`);
   return (dispatch) =>{
     request.then(({data}) => {
       dispatch({ type: FETCH_VOTES, payload: data})
