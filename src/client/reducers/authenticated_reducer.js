@@ -9,7 +9,7 @@ export default function(state = INITIAL, action){
       let currentUser = localStorage.getItem('userName')
       return { ...state, authenticated: true, userName: action.payload || currentUser }
     case UNAUTH_USER:
-      return { ...state, authenticated: false}
+      return { ...state, authenticated: false, userName: ''}
   }
   return state;
 }

@@ -1,6 +1,7 @@
 $style-blue : #5c6fc5;
 $alert-color: #FF4081;
 $welcome-color: #EEEEEE;
+$twitter-color: #4099FF;
 
 #app {
   display: flex;
@@ -52,6 +53,10 @@ main {
   &:hover{
     background: rgb(255, 50, 56);
   }
+}
+
+.twitter-btn{
+  background: $twitter-color;
 }
 
 .page-footer{

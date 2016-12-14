@@ -37,9 +37,17 @@ class VoteTemplate extends Component {
       )
     }
   }
-  onSubmit(props){
-    let _id = this.props.params.id;
-    this.props.castVote(_id, props)
+  renderTwitterBtn(){
+    const { auth } = this.props;
+    let newURL = window.location.protocol + "//" + window.location.host + "/" + window.location.pathname;
+    let text = `Check out this voting app from FreeCodeCamp! ${newURL}`;
+    let twitterURL = `https://twitter.com/intent/tweet?text=${text}`;
+    if (auth){
+      return(
+        <a href={twitterURL} target="_blank" className="btn twitter-btn">Share on Twitter <i className="fa fa-twitter"></i>
+        </a>
+      )
+    }
   }
   renderRadioButtons(labelOption){
     return(
@@ -48,6 +56,10 @@ class VoteTemplate extends Component {
         <label>{labelOption}</label>
       </p>
     )
+  }
+  onSubmit(props){
+    let _id = this.props.params.id;
+    this.props.castVote(_id, props)
   }
   render() {
     let optionLabels, optionCount;
@@ -101,6 +113,7 @@ class VoteTemplate extends Component {
                 <i className="fa fa-paper-plane-o"></i>
               </button>
               {this.renderDeleteBtn()}
+              {this.renderTwitterBtn()}
             </div>
           </div>
         </form>
@@ -112,6 +125,7 @@ class VoteTemplate extends Component {
 function mapStateToProps(state){
   return {
     voteData: state.voteData,
+    auth: state.auth.authenticated,
     userName: state.auth.userName
   };
 }
