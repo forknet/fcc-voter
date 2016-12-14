@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router';
+import * as actions from '../actions/';
 
 class NavBar extends Component {
   renderLinks(){
@@ -14,11 +15,10 @@ class NavBar extends Component {
           <Link to="/newpoll">Add New Poll</Link>
         </li>,
         <li className="signout" key={2}>
-          <Link to="/signout">Sign Out</Link>
+          <a onClick={() => this.onSignOffClick()}>SignOut</a>
         </li>
       ]
     } else{
-      // show a link to sign in and sign up
       return [
         <li className="sign-up" key={1}>
           <Link to="/signup">Sign up</Link>
@@ -27,6 +27,12 @@ class NavBar extends Component {
           <Link to="/login">Login</Link>
         </li>
       ]
+    }
+  }
+  onSignOffClick(){
+    const { signoutUser } = this.props
+    if (confirm('Are you sure you to signoff?')) {
+      this.props.signoutUser();
     }
   }
   render(){
@@ -50,4 +56,4 @@ function mapStateToProps(state){
   }
 }
 
-export default connect(mapStateToProps)(NavBar)
+export default connect(mapStateToProps, actions )(NavBar)

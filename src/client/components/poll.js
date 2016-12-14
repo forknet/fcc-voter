@@ -20,7 +20,7 @@ class VoteTemplate extends Component {
   }
   onDeleteSubmit(){
     const { voteData } = this.props
-    if (confirm('Are you to remove this poll?')) {
+    if (confirm('Are you sure you  want to remove this poll?')) {
       this.props.deletePoll(voteData.pollInfo._id)
 
     } else {

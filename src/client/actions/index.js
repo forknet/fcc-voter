@@ -119,13 +119,12 @@ export function signupUser( {userName, email, password}){
 }
 
 export function signoutUser(){
-  let timeDelay = 900;
+  let timeDelay = 3000;
   localStorage.removeItem('token')
   localStorage.removeItem('userName')
+  browserHistory.push('/')
+  Materialize.toast(`See You Next Time!`, timeDelay)
   return ({
     type: UNAUTH_USER
   })
-  // Materialize.toast('See ya next time!', timeDelay, '', browserHistory.push('/') )
 }
-
-// Materialize.toast('Thanks for casting your Vote!', timeDelay, '', ()=> window.location.reload())
