@@ -1,4 +1,4 @@
-import { FETCH_VOTES, FETCH_POLL, CAST_VOTE, NEW_POLL } from '../actions/types'
+import { FETCH_VOTES, FETCH_POLL, CAST_VOTE, NEW_POLL, FETCH_USERPOSTS } from '../actions/types'
 
 const INITIAL = { vote: [], pollInfo: []}
 
@@ -8,8 +8,9 @@ export default function(state=INITIAL, action){
       return {...state, vote: action.payload, pollInfo: []}
     case FETCH_POLL:
       return {...state, pollInfo: action.payload}
+    case FETCH_USERPOSTS:
+      return {... state, vote: action.payload}
     case CAST_VOTE:
-      console.log('casted a vote')
       return { ...state, castvote: action.payload}
     case NEW_POLL:
       return { ...state}

@@ -1,10 +1,12 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import * as actions from '../actions'
+import * as actions from '../actions';
+import { Link } from 'react-router';
 
 class MyPolls extends Component {
   componentDidMount(){
-    // this.props.fetchVotes()
+    let currentUserName = this.props.userName;
+    this.props.fetchUserPosts(currentUserName)
   }
   renderCards({title, date, description, _id}){
     return(
@@ -23,7 +25,8 @@ class MyPolls extends Component {
     )
   }
   render(){
-    // console.log(this.props.userName)
+    console.log(this.props.voteData)
+
     const { userName } = this.props
     return(
       <main className="votes-container container">
@@ -34,7 +37,7 @@ class MyPolls extends Component {
           </div>
         </div>
         <div className="row">
-
+          {(this.props.voteData.vote).map(this.renderCards)}
         </div>
       </main>
     )

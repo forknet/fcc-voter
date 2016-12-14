@@ -1,11 +1,11 @@
 import axios from 'axios';
 const ROOT_URL = 'http://localhost:1234';
 import { browserHistory } from 'react-router';
-import { FETCH_VOTES, FETCH_POLL, CAST_VOTE, NEW_POLL ,
+import { FETCH_VOTES, FETCH_POLL, FETCH_USERPOSTS, CAST_VOTE, NEW_POLL ,
   AUTH_USER, AUTH_ERROR, UNAUTH_USER, FETCH_MESSAGE } from './types';
 
 export function fetchVotes(){
-  const request = axios.get(`${ROOT_URL}/fetchvotes`);
+  const request = axios.get(`${ROOT_URL}/allpolls`);
   return (dispatch) =>{
     request.then(({data}) => {
       dispatch({ type: FETCH_VOTES, payload: data})
@@ -21,6 +21,18 @@ export function fetchPoll(id){
   return (dispatch) => {
     request.then( ({data}) => {
       dispatch({ type: FETCH_POLL, payload: data})
+    })
+    .catch(function( error){
+      console.log(error)
+    })
+  }
+}
+export function fetchUserPosts(userName){
+
+  const request = axios.get(`${ROOT_URL}/fetchvotes/${userName}`)
+  return (dispatch) => {
+    request.then( ({data}) => {
+      dispatch({ type: FETCH_USERPOSTS, payload: data})
     })
     .catch(function( error){
       console.log(error)

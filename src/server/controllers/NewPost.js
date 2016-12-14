@@ -10,7 +10,6 @@ exports.newpost = function(req, res, next){
     labelOptions[prop] = 0 // set counter to default 0
   })
   const userName = req.body.userName;
-  console.log(userName, 'this is USERNAME ~~~~~')
 
   const poll = new Poll({
     title: title,
@@ -24,10 +23,4 @@ exports.newpost = function(req, res, next){
     if (err) { return next(err); }
     res.json({id: document._id})
   });
-}
-
-exports.getpost = function(req, res, next){
-  Poll.find({}, function(err, data){
-    res.send(data)
-  })
 }

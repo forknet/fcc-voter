@@ -1,6 +1,7 @@
 const NewPost = require('./controllers/NewPost');
 const GetPoll = require('./controllers/GetPoll');
 const CastVote = require('./controllers/CastVote');
+const AllPolls = require('./controllers/AllPolls');
 const FetchVotes = require('./controllers/FetchVotes');
 
 const Authentication = require('./controllers/authentication');
@@ -16,10 +17,11 @@ module.exports = function(app){
     res.send({message: 'Super secret code is ABC123'})
   })
 
-  app.get('/fetchvotes', FetchVotes.getvotes)
+  app.get('/allpolls', AllPolls.allposts)
+
+  app.get('/fetchvotes/:userName', FetchVotes.getvotes)
 
   app.post('/newpost', NewPost.newpost)
-  app.get('/newpost', NewPost.getpost)
 
   app.get('/polls/:id', GetPoll.getpost)
   app.put('/polls/:id', CastVote.update)
