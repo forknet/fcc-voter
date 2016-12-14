@@ -2,7 +2,7 @@ import axios from 'axios';
 const ROOT_URL = 'http://localhost:1234';
 import { browserHistory } from 'react-router';
 import { FETCH_VOTES, FETCH_POLL, CAST_VOTE, NEW_POLL ,
-  AUTH_USER, AUTH_ERROR, UNAUTH_USER, FETCH_MESSAGE} from './types';
+  AUTH_USER, AUTH_ERROR, UNAUTH_USER, FETCH_MESSAGE } from './types';
 
 export function fetchVotes(){
   const request = axios.get(`${ROOT_URL}/newpost`);
@@ -28,12 +28,13 @@ export function fetchPoll(id){
   }
 }
 
-export function newPoll({title, description, labelOptions}){
-  const request = axios.post(`${ROOT_URL}/newpost`, {title, description, labelOptions})
+export function newPoll({title, description, labelOptions, userName}){
+  let timeDelay = 3000;
+  const request = axios.post(`${ROOT_URL}/newpost`, {title, description, labelOptions, userName})
   return (dispatch) =>{
     request.then(({data}) =>{
       dispatch({ type: NEW_POLL, payload: data})
-      console.log(data)
+      Materialize.toast('Poll Created!', timeDelay)
       browserHistory.push(`/poll/${data.id}`)
     })
     .catch(function (error) {

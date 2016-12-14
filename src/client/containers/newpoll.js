@@ -11,7 +11,8 @@ class NewPoll extends Component {
     this.onSubmit = this.onSubmit.bind(this)
   }
   onSubmit(props){
-    this.props.newPoll(props)
+    let formValues = { ...props, userName: this.props.userName }
+    this.props.newPoll(formValues)
   }
   render(){
     const { handleSubmit, submitting } = this.props;
@@ -86,10 +87,16 @@ const renderField = ({ input, label, type, meta: { touched, error, warning } }) 
   </div>
 )
 
+function mapStateToProps(state){
+  return (
+    { userName: state.auth.userName}
+  )
+}
+
 
 NewPoll = reduxForm({
   form: 'NewPoll',
   validate
 })(NewPoll)
 
-export default NewPoll = connect(null, actions)(NewPoll)
+export default NewPoll = connect(mapStateToProps, actions)(NewPoll)

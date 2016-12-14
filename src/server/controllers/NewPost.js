@@ -9,11 +9,14 @@ exports.newpost = function(req, res, next){
   req.body.labelOptions.split(/,\s*/).map( prop =>{
     labelOptions[prop] = 0 // set counter to default 0
   })
+  const userName = req.body.userName;
+  console.log(userName, 'this is USERNAME ~~~~~')
 
   const poll = new Poll({
     title: title,
     description: description,
     labelOptions: labelOptions,
+    userName: userName,
     date: moment().format('MMM D, YYYY')
   });
 

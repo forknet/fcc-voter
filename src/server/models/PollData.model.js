@@ -5,6 +5,7 @@ const pollData = new Schema({
   title: String,
   description: String,
   labelOptions: {},
+  userName: String,
   date: String
 })
 
