@@ -25,8 +25,6 @@ class MyPolls extends Component {
     )
   }
   render(){
-    console.log(this.props.voteData)
-
     const { userName } = this.props
     return(
       <main className="votes-container container">

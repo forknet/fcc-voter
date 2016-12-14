@@ -18,7 +18,16 @@ class VoteTemplate extends Component {
   componentWillMount(){
     this.props.fetchPoll(this.props.params.id)
   }
-
+  renderDeleteBtn(){
+    const {voteData, userName} = this.props
+    if(userName === voteData.pollInfo.userName){
+      return(
+        <Link to="/" className="btn waves-effect waves-light cancel-btn">Delete
+          <i className="fa fa-times"></i>
+        </Link>
+      )
+    }
+  }
   onSubmit(props){
     let _id = this.props.params.id;
     this.props.castVote(_id, props)
@@ -64,6 +73,7 @@ class VoteTemplate extends Component {
     if(asyncData){
       graph = <BarChart data={chartData} options={chartOptions}/>
     }
+
     return (
       <main className="container">
         <div className="row">
@@ -81,9 +91,7 @@ class VoteTemplate extends Component {
               <button className="btn" type="submit" disabled={pristine || submitting}>Submit
                 <i className="fa fa-paper-plane-o"></i>
               </button>
-              <Link to="/" className="btn waves-effect waves-light cancel-btn">Cancel
-                <i className="fa fa-times"></i>
-              </Link>
+              {this.renderDeleteBtn()}
             </div>
           </div>
         </form>
@@ -93,7 +101,10 @@ class VoteTemplate extends Component {
 }
 
 function mapStateToProps(state){
-  return {voteData: state.voteData};
+  return {
+    voteData: state.voteData,
+    userName: state.auth.userName
+  };
 }
 
 VoteTemplate = reduxForm({
