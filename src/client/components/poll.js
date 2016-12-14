@@ -18,13 +18,22 @@ class VoteTemplate extends Component {
   componentWillMount(){
     this.props.fetchPoll(this.props.params.id)
   }
+  onDeleteSubmit(){
+    const { voteData } = this.props
+    if (confirm('Are you to remove this poll?')) {
+      this.props.deletePoll(voteData.pollInfo._id)
+
+    } else {
+        Materialize.toast(`You almost deleted your poll!`, 3000)
+    }
+  }
   renderDeleteBtn(){
     const {voteData, userName} = this.props
     if(userName === voteData.pollInfo.userName){
       return(
-        <Link to="/" className="btn waves-effect waves-light cancel-btn">Delete
+        <a onClick={() => this.onDeleteSubmit()} className="btn waves-effect waves-light cancel-btn">Delete
           <i className="fa fa-times"></i>
-        </Link>
+        </a>
       )
     }
   }

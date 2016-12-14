@@ -1,7 +1,7 @@
 import axios from 'axios';
 const ROOT_URL = 'http://localhost:1234';
 import { browserHistory } from 'react-router';
-import { FETCH_VOTES, FETCH_POLL, FETCH_USERPOSTS, CAST_VOTE, NEW_POLL ,
+import { FETCH_VOTES, FETCH_POLL, FETCH_USERPOSTS, CAST_VOTE, NEW_POLL, DELETE_POLL ,
   AUTH_USER, AUTH_ERROR, UNAUTH_USER, FETCH_MESSAGE } from './types';
 
 export function fetchVotes(){
@@ -28,7 +28,6 @@ export function fetchPoll(id){
   }
 }
 export function fetchUserPosts(userName){
-
   const request = axios.get(`${ROOT_URL}/fetchvotes/${userName}`)
   return (dispatch) => {
     request.then( ({data}) => {
@@ -52,6 +51,20 @@ export function newPoll({title, description, labelOptions, userName}){
     .catch(function (error) {
       console.log(error);
     });
+  }
+}
+export function deletePoll(id){
+  let timeDelay = 3000;
+  const request = axios.delete(`${ROOT_URL}/polls/${id}`)
+  return (dispatch) => {
+    request.then( ({data}) => {
+      dispatch({ type: DELETE_POLL})
+      browserHistory.push('/')
+      Materialize.toast(`Successfully removed the poll`, timeDelay)
+    })
+    .catch(function( error){
+      console.log(error)
+    })
   }
 }
 

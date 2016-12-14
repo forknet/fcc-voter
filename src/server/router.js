@@ -2,6 +2,7 @@ const NewPost = require('./controllers/NewPost');
 const GetPoll = require('./controllers/GetPoll');
 const CastVote = require('./controllers/CastVote');
 const AllPolls = require('./controllers/AllPolls');
+const DeletePoll = require('./controllers/DeletePoll');
 const FetchVotes = require('./controllers/FetchVotes');
 
 const Authentication = require('./controllers/authentication');
@@ -25,7 +26,10 @@ module.exports = function(app){
 
   app.get('/polls/:id', GetPoll.getpost)
   app.put('/polls/:id', CastVote.update)
+  app.delete('/polls/:id', DeletePoll.deletepost)
 
   app.post('/signup', Authentication.signup)
   app.post('/signin', requireSignIn,  Authentication.signin)
+
+
 }
