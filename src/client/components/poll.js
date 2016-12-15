@@ -1,10 +1,11 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import Chart from 'chart.js';
-import { Field,  reduxForm } from 'redux-form';
+import { Field,  reduxForm, formValueSelector } from 'redux-form';
 const  { DOM: { input, select, textarea } } = React;
 import { Bar as BarChart } from 'react-chartjs';
 import { Link } from 'react-router';
+import { Row, Input } from 'react-materialize'
 import * as actions from '../actions/';
 
 class VoteTemplate extends Component {
@@ -51,10 +52,7 @@ class VoteTemplate extends Component {
   }
   renderRadioButtons(labelOption){
     return(
-      <p key={labelOption}>
-        <Field name="labelOption" component="input" type="radio" className="radio-button-css" value={labelOption}/>
-        <label>{labelOption}</label>
-      </p>
+      <option key={labelOption} value={labelOption}>{labelOption}</option>
     )
   }
   onSubmit(props){
@@ -106,7 +104,10 @@ class VoteTemplate extends Component {
         <form onSubmit={handleSubmit(this.onSubmit)}>
           <div className="row">
             <div className="col s12">
-              {(optionLabels || []).map(this.renderRadioButtons)}
+              <Field name="labelOption" component="select">
+                <option>My Options</option>
+                {(optionLabels || []).map(this.renderRadioButtons)}
+              </Field>
             </div>
             <div className="col input-field s12">
               <button className="btn" type="submit" disabled={pristine || submitting}>Submit
@@ -133,5 +134,6 @@ function mapStateToProps(state){
 VoteTemplate = reduxForm({
   form: 'CastVote'
 })(VoteTemplate)
+
 
 export default VoteTemplate = connect(mapStateToProps, actions)(VoteTemplate)
