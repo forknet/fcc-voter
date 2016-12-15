@@ -20,15 +20,15 @@ function colorPick(numberOfOptions){
 export default function(state=INITIAL, action){
   switch (action.type) {
     case FETCH_VOTES:
-      return {...state, vote: action.payload, pollInfo: []}
+      return {...state, vote: action.payload, pollInfo: [], colorSchemes: ''}
     case FETCH_POLL:
       let numberOfOptions = Object.keys(action.payload.labelOptions).length;
-      let colorSchemes = colorPick(numberOfOptions)
+      let colorSchemes = colorPick(numberOfOptions);
       return {...state, pollInfo: action.payload, colorSchemes: colorSchemes}
     case DELETE_POLL:
       return {...state, pollInfo: []}
     case FETCH_USERPOSTS:
-      return {... state, vote: action.payload}
+      return {... state, vote: action.payload, pollInfo: [], colorSchemes: ''}
     case CAST_VOTE:
       return { ...state, castvote: action.payload}
     case NEW_POLL:

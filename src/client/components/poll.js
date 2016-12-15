@@ -67,7 +67,7 @@ class VoteTemplate extends Component {
       datasets: [
         {
           fillColor: this.props.voteData.colorSchemes,
-          strokeColor: "rgba(220,220,220,0.8)",
+          strokeColor: "rgba(55, 56, 53, 0.54)",
           highlightFill: "rgb(189, 57, 47)",
           highlightStroke: "rgb(176, 0, 52)",
           data: optionCount || []
