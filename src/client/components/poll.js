@@ -12,9 +12,6 @@ class VoteTemplate extends Component {
   constructor(props) {
     super(props);
     this.onSubmit = this.onSubmit.bind(this);
-    this.state ={
-      updateCastVote: []
-    }
   }
   componentWillMount(){
     this.props.fetchPoll(this.props.params.id)
@@ -69,10 +66,9 @@ class VoteTemplate extends Component {
       labels: optionLabels || [],
       datasets: [
         {
-          labels: ['01', '02', '03', '05', '06', '09'],
-          fillColor: ['orange', 'skyblue', 'red'],
+          fillColor: this.props.voteData.colorSchemes,
           strokeColor: "rgba(220,220,220,0.8)",
-          highlightFill: "rgba(7, 122, 102, 0.75)",
+          highlightFill: "rgb(189, 57, 47)",
           highlightStroke: "rgb(176, 0, 52)",
           data: optionCount || []
         }
@@ -90,7 +86,7 @@ class VoteTemplate extends Component {
     let asyncData = (optionLabels) ? true : false; //sets true when the fetched data is retrieved
     let graph = null
     if(asyncData){
-      graph = <BarChart data={chartData} options={chartOptions}/>
+      graph = <BarChart data={chartData} options={chartOptions} />
     }
 
     return (
@@ -103,7 +99,7 @@ class VoteTemplate extends Component {
         {graph}
         <form onSubmit={handleSubmit(this.onSubmit)}>
           <div className="row">
-            <div className="col s12">
+            <div className="col s6">
               <Field name="labelOption" component="select">
                 <option>My Options</option>
                 {(optionLabels || []).map(this.renderRadioButtons)}
