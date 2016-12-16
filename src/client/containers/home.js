@@ -11,10 +11,10 @@ class Home extends Component {
   renderCards({title, date, description, _id}){
     return(
       <div key={_id} className="col s12 m6 l4 center-align">
-        <div className="card blue-grey darken-1 hoverable">
+        <div className="card teal darken-1 hoverable">
           <div className="card-content white-text">
             <span className="card-title">{title}</span>
-            <p className="description ">{description}</p>
+            <blockquote className="description ">{description}</blockquote>
           </div>
           <div className="card-action">
             <Link to={`poll/${_id}`}>Result</Link>
@@ -35,7 +35,7 @@ class Home extends Component {
             Click a poll to see the results and vote</p>
           </div>
         </div>
-        <div className="row">
+        <div className="row polls-container">
           {(this.props.voteData.vote).map(this.renderCards)}
         </div>
       </main>

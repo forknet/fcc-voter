@@ -1,3 +1,4 @@
+$style-background: white;
 $style-blue : #5c6fc5;
 $alert-color: #FF4081;
 $welcome-color: #EEEEEE;
@@ -7,6 +8,7 @@ $twitter-color: #4099FF;
   display: flex;
   min-height: 100vh;
   flex-direction: column;
+  background: $style-background;
 }
 
 main {
@@ -15,6 +17,10 @@ main {
 
 select{
   display: inline-block;
+}
+
+nav{
+  background: $style-blue;
 }
 
 .nav-right{
@@ -26,6 +32,11 @@ select{
 
 .btn{
   margin-left: 8px;
+}
+
+.polls-container{
+  display: flex;
+  flex-wrap: wrap;
 }
 
 .input-field{

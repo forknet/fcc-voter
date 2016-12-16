@@ -11,10 +11,10 @@ class MyPolls extends Component {
   renderCards({title, date, description, _id}){
     return(
       <div key={_id} className="col s12 m6 l4 center-align">
-        <div className="card blue-grey darken-1 hoverable">
+        <div className="card teal darken-1 hoverable">
           <div className="card-content white-text">
             <span className="card-title">{title}</span>
-            <p className="description ">{description}</p>
+            <blockquote className="description ">{description}</blockquote>
           </div>
           <div className="card-action">
             <Link to={`poll/${_id}`}>Result</Link>
