@@ -62,6 +62,10 @@ const validate = values => {
     errors.description = "Don't forget to write something about your poll!"
   }
 
+  if(values.description && values.description.length > 38){
+    errors.description = "Too Long! Make the description more concise!"
+  }
+
   if(!values.labelOptions){
     errors.labelOptions = "Don't forget what options you want for users to vote for!"
   }
@@ -74,7 +78,7 @@ const validate = values => {
     errors.labelOptions = "Incomplete Fill"
   }
   if(values.labelOptions && /[\.\?]/.test(values.labelOptions)){
-    errors.labelOptions = "No . or . or ? is allowed"
+    errors.labelOptions = "No periods(.) or question-marks(?) are allowed"
   }
 
   return errors;

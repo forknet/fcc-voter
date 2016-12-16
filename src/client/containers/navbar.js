@@ -41,6 +41,9 @@ class NavBar extends Component {
         <div className="nav-wrapper container">
           <Link className="brand-logo" to="/">Votez</Link>
             <ul className="right nav-right">
+              <li>
+                <Link to="/">Home</Link>
+              </li>
               {this.renderLinks()}
             </ul>
         </div>
