@@ -18,7 +18,7 @@ class MyPolls extends Component {
           </div>
           <div className="card-action">
             <Link to={`poll/${_id}`}>Result</Link>
-            <a href="#">{date}</a>
+            <a className="disable-link" href="#">{date}</a>
           </div>
         </div>
       </div>
