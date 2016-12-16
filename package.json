@@ -1,16 +1,16 @@
 {
-  "name": "simple-app",
+  "name": "fcc-vote-app",
   "version": "1.0.0",
   "description": "demo",
   "main": "index.js",
   "repository": "",
   "scripts": {
-    "start": "node server.js",
+    "start": "node server.js & node src/server/index.js",
     "test": "mocha --compilers js:babel-core/register --require ./test/test_helper.js --require ignore-styles  --recursive ./test",
     "test:watch": "npm run test -- --watch",
-    "dev": "nodemon src/server/index.js"
+    "dev": "nodemon src/server/index.js "
   },
-  "author": "",
+  "author": "Kenzo Mendoza",
   "license": "ISC",
   "devDependencies": {
     "babel-core": "^6.2.1",
