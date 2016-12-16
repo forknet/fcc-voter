@@ -45,7 +45,7 @@ class Home extends Component {
 
 function mapStateToProps(state){
   return {
-    allPolls: state.voteData.vote.reverse()
+    allPolls: state.voteData.vote
   };
 }
 

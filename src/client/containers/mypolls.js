@@ -45,7 +45,7 @@ class MyPolls extends Component {
 function mapStateToProps(state){
   return {
     userName: state.auth.userName,
-    allPolls: state.voteData.vote.reverse()
+    allPolls: state.voteData.vote
   };
 }
 
