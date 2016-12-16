@@ -14,7 +14,7 @@ class MyPolls extends Component {
         <div className="card teal darken-1 hoverable">
           <div className="card-content white-text">
             <span className="card-title">{title}</span>
-            <blockquote className="description ">{description}</blockquote>
+            <p className="description ">{description}</p>
           </div>
           <div className="card-action">
             <Link to={`poll/${_id}`}>Result</Link>
@@ -35,7 +35,7 @@ class MyPolls extends Component {
           </div>
         </div>
         <div className="row">
-          {(this.props.voteData.vote).map(this.renderCards)}
+          {(this.props.allPolls).map(this.renderCards)}
         </div>
       </main>
     )
@@ -44,8 +44,8 @@ class MyPolls extends Component {
 
 function mapStateToProps(state){
   return {
-    voteData: state.voteData,
-    userName: state.auth.userName
+    userName: state.auth.userName,
+    allPolls: state.voteData.vote.reverse()
   };
 }
 

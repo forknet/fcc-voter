@@ -14,7 +14,7 @@ class Home extends Component {
         <div className="card teal darken-1 hoverable">
           <div className="card-content white-text">
             <span className="card-title">{title}</span>
-            <blockquote className="description ">{description}</blockquote>
+            <p className="description ">{description}</p>
           </div>
           <div className="card-action">
             <Link to={`poll/${_id}`}>Result</Link>
@@ -36,7 +36,7 @@ class Home extends Component {
           </div>
         </div>
         <div className="row polls-container">
-          {(this.props.voteData.vote).map(this.renderCards)}
+          {(this.props.allPolls).map(this.renderCards)}
         </div>
       </main>
     )
@@ -44,7 +44,9 @@ class Home extends Component {
 }
 
 function mapStateToProps(state){
-  return {voteData: state.voteData};
+  return {
+    allPolls: state.voteData.vote.reverse()
+  };
 }
 
 export default connect(mapStateToProps, actions)(Home)
