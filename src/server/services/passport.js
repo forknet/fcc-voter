@@ -1,6 +1,6 @@
 const passport = require('passport');
 const User = require('../models/User.model');
-const secret = process.env.SECRET;
+const secret = process.env.SECRET || require('../config').secret;
 const JwtStrategy = require('passport-jwt').Strategy;
 const ExtractJwt = require('passport-jwt').ExtractJwt;
 const LocalStrategy = require('passport-local');
