@@ -74,7 +74,7 @@ export function castVote(id, {labelOption}){
   return (dispatch) => {
     request.then( ({data}) => {
       dispatch({ type: CAST_VOTE, payload: data })
-      Materialize.toast('Thanks for casting your Vote!', timeDelay, '', ()=> window.location.reload())
+      Materialize.toast('Thanks for casting your Vote!', 1000, '', ()=> window.location.reload())
     })
     .catch(function (error){
       Materialize.toast('Sorry, something went wrong :( ...', timeDelay)

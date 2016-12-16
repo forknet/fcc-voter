@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import Chart from 'chart.js';
 import { Field,  reduxForm, formValueSelector } from 'redux-form';
-const  { DOM: { input, select, textarea } } = React;
 import { Bar as BarChart } from 'react-chartjs';
 import { Link } from 'react-router';
 import { Row, Input } from 'react-materialize'
@@ -47,7 +46,7 @@ class VoteTemplate extends Component {
       )
     }
   }
-  renderRadioButtons(labelOption){
+  renderSelectionOptions(labelOption){
     return(
       <option key={labelOption} value={labelOption}>{labelOption}</option>
     )
@@ -63,14 +62,14 @@ class VoteTemplate extends Component {
       optionCount = Object.values(this.props.voteData.pollInfo.labelOptions);
     }
     const chartData = {
-      labels: optionLabels || [],
+      labels: optionLabels,
       datasets: [
         {
           fillColor: this.props.voteData.colorSchemes,
           strokeColor: "rgba(55, 56, 53, 0.54)",
           highlightFill: "rgb(189, 57, 47)",
           highlightStroke: "rgb(176, 0, 52)",
-          data: optionCount || []
+          data: optionCount
         }
       ]
     };
@@ -82,13 +81,13 @@ class VoteTemplate extends Component {
       responsive: true,
       scaleFontSize: 15
     };
-    const { handleSubmit, pristine, reset, submitting } = this.props
+    const { handleSubmit, pristine, reset, submitting, dirty } = this.props
     let asyncData = (optionLabels) ? true : false; //sets true when the fetched data is retrieved
     let graph = null
     if(asyncData){
       graph = <BarChart data={chartData} options={chartOptions} />
     }
-
+    console.log(pristine)
     return (
       <main className="container">
         <div className="row">
@@ -97,15 +96,17 @@ class VoteTemplate extends Component {
           </div>
         </div>
         {graph}
+        <label>Cast Your Vote</label>
         <form onSubmit={handleSubmit(this.onSubmit)}>
           <div className="row">
             <div className="col s6">
               <Field name="labelOption" component="select">
-                <option>My Options</option>
-                {(optionLabels || []).map(this.renderRadioButtons)}
+                <option></option>
+                {(optionLabels || []).map(this.renderSelectionOptions)}
               </Field>
             </div>
-            <div className="col input-field s12">
+
+            <div className="col input-field s12 extraOption">
               <button className="btn" type="submit" disabled={pristine || submitting}>Submit
                 <i className="fa fa-paper-plane-o"></i>
               </button>
@@ -117,6 +118,24 @@ class VoteTemplate extends Component {
       </main>
     )
   }
+}
+const renderField = ({ input, label, type, meta: { touched, error, warning } }) => (
+  <div>
+    <label>{label}</label>
+    <div>
+      <input {...input} placeholder={label} type={type}/>
+      {touched && (error && <div className="error">{error}</div>)}
+    </div>
+  </div>
+)
+
+const validate = values => {
+  const errors = {};
+  if (!values.labelOptions){
+    errors.labelOptions = "Please choose something"
+  }
+
+  return errors;
 }
 
 function mapStateToProps(state){
