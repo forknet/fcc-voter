@@ -30,9 +30,9 @@ class Home extends Component {
         <div className="row welcome">
           <div className="col s12 center-align">
             <h3>Welcome To Votez App</h3>
-            <p>An easy app to use online voting with instant chart
+            <h5>An easy app to use online voting with instant chart
             results. Below are the polls hosted by Votez from various users.
-            Click a poll to see the results and vote</p>
+            Click a poll to see the results and vote</h5>
           </div>
         </div>
         <div className="row polls-container">

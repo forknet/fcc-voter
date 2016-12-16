@@ -4,6 +4,10 @@ $alert-color: #FF4081;
 $welcome-color: #EEEEEE;
 $twitter-color: #4099FF;
 
+html {
+  font-family: GillSans, Calibri, Trebuchet, sans-serif;
+}
+
 #app {
   display: flex;
   min-height: 100vh;
@@ -31,6 +35,7 @@ nav{
 }
 
 .btn{
+  cursor: pointer;
   margin-left: 8px;
 }
 
@@ -44,6 +49,10 @@ nav{
   label{
     visibility: hidden;
   }
+}
+
+label{
+  color: #150b0b;
 }
 
 .votes-container{
@@ -72,6 +81,9 @@ nav{
 
 .twitter-btn{
   background: $twitter-color;
+  &:hover{
+    background: rgb(0, 119, 255);
+  }
 }
 
 .page-footer{
