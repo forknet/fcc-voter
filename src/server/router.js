@@ -30,6 +30,4 @@ module.exports = function(app){
 
   app.post('/signup', Authentication.signup)
   app.post('/signin', requireSignIn,  Authentication.signin)
-
-
 }
