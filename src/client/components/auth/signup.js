@@ -19,7 +19,7 @@ class Signup extends Component {
       <main className="login container">
         <div className="row">
           <div className="col s12 form-title">
-            <h3><i className="fa fa-sign-in"></i> Sign-up </h3>
+            <h3><i className="fa fa-address-card"></i> Sign-up </h3>
           </div>
         </div>
         <div className="row">
@@ -47,6 +47,15 @@ class Signup extends Component {
               </div>
             </div>
           </form>
+        </div>
+        <div className="row">
+          <div className="col input-field s12">
+            This app only requires a valid email and uses JWT Tokens (no cookies...yay!)
+            <br></br>
+            If you do not want to use your private email, no problem!
+            <br></br>
+            You can use <a href="http://www.throwawaymail.com/">disposable email!</a> Just make sure you remember your password ;-)
+          </div>
         </div>
       </main>
     )
