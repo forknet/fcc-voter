@@ -10,6 +10,7 @@ import * as actions from '../actions/';
 class VoteTemplate extends Component {
   constructor(props) {
     super(props);
+    this.state = {submitted: false}
     this.onSubmit = this.onSubmit.bind(this);
   }
   componentWillMount(){
@@ -52,6 +53,7 @@ class VoteTemplate extends Component {
     )
   }
   onSubmit(props){
+    this.setState( {submitted: true} )
     let _id = this.props.params.id;
     this.props.castVote(_id, props)
   }
@@ -81,7 +83,7 @@ class VoteTemplate extends Component {
       responsive: true,
       scaleFontSize: 15
     };
-    const { handleSubmit, pristine, reset, submitting, dirty } = this.props
+    const { handleSubmit, pristine, reset, submitting, dirty} = this.props
     let asyncData = (optionLabels) ? true : false; //sets true when the fetched data is retrieved
     let graph = null
     if(asyncData){
@@ -106,7 +108,7 @@ class VoteTemplate extends Component {
               </Field>
             </div>
             <div className="col input-field s12 extraOption">
-              <button className="btn" type="submit" disabled={pristine || submitting}>Submit
+              <button className="btn" type="submit" disabled={pristine || this.state.submitted}>Submit
                 <i className="fa fa-paper-plane-o"></i>
               </button>
               {this.renderDeleteBtn()}
