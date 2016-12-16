@@ -87,12 +87,12 @@ class VoteTemplate extends Component {
     if(asyncData){
       graph = <BarChart data={chartData} options={chartOptions} />
     }
-    console.log(pristine)
     return (
       <main className="container">
         <div className="row">
           <div className="col center-align s12">
-            <h3>{this.props.voteData.pollInfo.title || ''}</h3>
+            <h3>{this.props.voteData.pollInfo.title}</h3>
+            <h5>{this.props.voteData.pollInfo.description}</h5>
           </div>
         </div>
         {graph}
@@ -105,7 +105,6 @@ class VoteTemplate extends Component {
                 {(optionLabels || []).map(this.renderSelectionOptions)}
               </Field>
             </div>
-
             <div className="col input-field s12 extraOption">
               <button className="btn" type="submit" disabled={pristine || submitting}>Submit
                 <i className="fa fa-paper-plane-o"></i>
