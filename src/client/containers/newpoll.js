@@ -73,6 +73,9 @@ const validate = values => {
   if(values.labelOptions && values.labelOptions.split(/[ ,]+/)[values.labelOptions.split(/[ ,]+/).length - 1] === ""){
     errors.labelOptions = "Incomplete Fill"
   }
+  if(values.labelOptions && /[\.\?]/.test(values.labelOptions)){
+    errors.labelOptions = "No . or . or ? is allowed"
+  }
 
   return errors;
 }
