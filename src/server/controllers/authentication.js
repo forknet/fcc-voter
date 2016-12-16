@@ -28,7 +28,8 @@ exports.signup = function(req, res, next){
     // If a user with email does exit, return err
     if (existingUser){
       console.log(existingUser, ': Email already exist')
-      return res.status(402).send({error: "Email already exist!"})
+      res.status(402)
+      res.send({"error": "Email already exist!"})
     }
 
     // If a user does not exist, create and save user's record

@@ -113,7 +113,8 @@ export function signupUser( {userName, email, password}){
         Materialize.toast(`Welcome ${response.data.userName}!`, timeDelay)
       })
       .catch(response =>{
-        Materialize.toast('Ooops! Try again!', timeDelay)
+        console.log(response)
+        Materialize.toast('Email already exist!', timeDelay)
       })
   }
 }
