@@ -7,7 +7,7 @@ const port = process.env.PORT || 1234;
 const bodyParser = require('body-parser');
 const router = require('./router');
 const mongoose = require('mongoose');
-const db =  process.env.MONGODB_URI || "mongodb://localhost:voteapp/voteapp" || 
+const db =  process.env.MONGODB_URI || "mongodb://localhost:voteapp/voteapp" ||
 
 const cors = require('cors')
 
