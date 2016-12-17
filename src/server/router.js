@@ -1,3 +1,4 @@
+const path = require('path');
 const NewPost = require('./controllers/NewPost');
 const GetPoll = require('./controllers/GetPoll');
 const CastVote = require('./controllers/CastVote');
@@ -14,10 +15,6 @@ const requireAuth = passport.authenticate('jwt', { session: false }); //middleWa
 const requireSignIn = passport.authenticate('local', { session: false });
 
 module.exports = function(app){
-  app.get('/', function(req, res){
-    res.send({message: 'Super secret code is ABC123'})
-  })
-
   app.get('/allpolls', AllPolls.allposts)
 
   app.get('/fetchvotes/:userName', FetchVotes.getvotes)
@@ -30,4 +27,9 @@ module.exports = function(app){
 
   app.post('/signup', Authentication.signup)
   app.post('/signin', requireSignIn,  Authentication.signin)
+
+  app.get('*', function(req, res) {
+    res.sendFile(path.join(__dirname, '../../index.html'));
+  });
+
 }

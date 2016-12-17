@@ -8,18 +8,34 @@ const router = require('./router');
 const mongoose = require('mongoose');
 const db =  process.env.MONGODB_URI || "mongodb://localhost:voteapp/voteapp";
 
+const config = require('../../webpack.config');
+const webpack = require('webpack');
+const compiler = webpack(config);
+
 const cors = require('cors')
 
 //DB Setup
 mongoose.connect(db);
 
+
+app.use('/index.html', express.static(path.join(__dirname, '../../index.html')))
+app.use('/dist/bundle.js/', express.static(path.resolve(__dirname, '../../dist/bundle.js')))
+
+app.use(require('webpack-dev-middleware')(compiler, {
+  publicPath: config.output.publicPath
+}));
+//
+app.use(require('webpack-hot-middleware')(compiler, {
+  path: '/__webpack_hmr',
+}));
 //App Setup
 app.use(morgan('combined'));
 
 app.use(cors()) //CORS middleware on express side
-// app.use(bodyParser.json({ type: '*/*' }));
+
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }))
+
 
 router(app);
 
