@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import * as actions from '../actions';
 import { Link } from 'react-router';
-const ROOT_URL = window.location.href ;
 
 class Home extends Component {
   componentDidMount(){
@@ -36,7 +35,7 @@ class Home extends Component {
           </div>
         </div>
         <div className="row polls-container">
-          {(this.props.allPolls).map(this.renderCards)}
+          {(this.props.allPolls || []).map(this.renderCards)}
         </div>
       </main>
     )
