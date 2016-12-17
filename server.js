@@ -1,4 +1,3 @@
-#!/usr/bin/env node
 var path = require('path');
 var webpack = require('webpack');
 var express = require('express');
