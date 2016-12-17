@@ -18,6 +18,7 @@ const cors = require('cors')
 mongoose.connect(db);
 
 app.use(cors()) //CORS middleware on express side
+app.use(cors()) //CORS middleware on express side
 
 app.use('/index.html', express.static(path.join(__dirname, '../../index.html')))
 app.use('/dist/bundle.js/', express.static(path.resolve(__dirname, '../../dist/bundle.js')))

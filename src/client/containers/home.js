@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import * as actions from '../actions';
 import { Link } from 'react-router';
-const ROOT_URL = 'http://localhost:1234';
+const ROOT_URL = window.location.href ;
 
 class Home extends Component {
   componentDidMount(){

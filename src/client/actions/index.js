@@ -1,5 +1,5 @@
 import axios from 'axios';
-const ROOT_URL = 'http://localhost:1234';
+const ROOT_URL = window.location.href;
 import { browserHistory } from 'react-router';
 import { FETCH_VOTES, FETCH_POLL, FETCH_USERPOSTS, CAST_VOTE, NEW_POLL, DELETE_POLL ,
   AUTH_USER, AUTH_ERROR, UNAUTH_USER, FETCH_MESSAGE } from './types';
