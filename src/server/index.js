@@ -1,4 +1,4 @@
-// Main starting point of the application
+#!/usr/bin/env node
 const express = require('express');
 const app = express();
 const path = require('path');
