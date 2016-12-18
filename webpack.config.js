@@ -2,7 +2,7 @@ var path = require('path')
 var webpack = require('webpack');
 var WriteFilePlugin = require('write-file-webpack-plugin');
 module.exports = {
-  devtool: 'cheap-module-eval-source-map',
+  devtool: 'source-map',
   entry: [
     'webpack-hot-middleware/client',
     './src/client/index.js'
