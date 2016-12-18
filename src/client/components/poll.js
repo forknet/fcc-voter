@@ -26,8 +26,8 @@ class VoteTemplate extends Component {
     }
   }
   renderDeleteBtn(){
-    const {voteData, userName} = this.props
-    if(userName === voteData.pollInfo.userName){
+    const {voteData, userName, auth} = this.props
+    if(userName === voteData.pollInfo.userName && auth === true){
       return(
         <a onClick={() => this.onDeleteSubmit()} className="btn waves-effect waves-light cancel-btn">Delete
           <i className="fa fa-times"></i>

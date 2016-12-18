@@ -1,6 +1,6 @@
 import { AUTH_USER ,UNAUTH_USER, AUTH_ERROR, FETCH_MESSAGE } from '../actions/types'
 
-const INITIAL = {}
+const INITIAL = {authenticated: false}
 
 export default function(state = INITIAL, action){
   switch (action.type) {
