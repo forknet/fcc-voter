@@ -23,7 +23,7 @@ module.exports = function(app){
 
   app.get('/polls/:id', GetPoll.getpost)
   app.put('/polls/:id', CastVote.update)
-  app.delete('/polls/:id', DeletePoll.deletepost)
+  app.delete('/polls/:id', requireAuth, DeletePoll.deletepost)
 
   app.post('/signup', Authentication.signup)
   app.post('/signin', requireSignIn,  Authentication.signin)
