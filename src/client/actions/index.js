@@ -1,5 +1,6 @@
 import axios from 'axios';
 const ROOT_URL = 'https://votez-app.herokuapp.com'
+// const ROOT_URL = 'http://localhost:1234'
 import { browserHistory } from 'react-router';
 import { FETCH_VOTES, FETCH_POLL, FETCH_USERPOSTS, CAST_VOTE, NEW_POLL, DELETE_POLL ,
   AUTH_USER, AUTH_ERROR, UNAUTH_USER, FETCH_MESSAGE } from './types';
@@ -54,8 +55,16 @@ export function newPoll({title, description, labelOptions, userName}){
   }
 }
 export function deletePoll(id){
+  //only authenticated users can delete posts
+  let secret = localStorage.getItem('token')
   let timeDelay = 3000;
-  const request = axios.delete(`${ROOT_URL}/polls/${id}`)
+
+  //include header parameters for axios requests
+  const request = axios.delete(`${ROOT_URL}/polls/${id}`,{
+    headers: {
+      "authorization": secret
+    }
+  })
   return (dispatch) => {
     request.then( ({data}) => {
       dispatch({ type: DELETE_POLL})
@@ -94,8 +103,6 @@ export function loginUser( {email, password}){
         Materialize.toast(`Welcome back ${response.data.userName}!`, timeDelay)
       })
       .catch(() =>{
-        // If request is bad...
-        // -Show an error to the user
         Materialize.toast('Ooops! Wrong email/password!', timeDelay)
       });
   }
