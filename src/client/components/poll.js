@@ -59,6 +59,7 @@ class VoteTemplate extends Component {
   }
   render() {
     let optionLabels, optionCount;
+    // Issue on Safari Broswers here on Object.values...
     if(this.props.voteData.pollInfo.length !== 0){
       optionLabels = Object.keys(this.props.voteData.pollInfo.labelOptions);
       optionCount = Object.values(this.props.voteData.pollInfo.labelOptions);

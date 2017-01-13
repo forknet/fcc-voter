@@ -43,6 +43,9 @@ In essence, this app is architectured MERN stack. It utilizes
 
 * [Materialiaze CSS](https://github.com/Dogfalo/materialize) - The css framework used
 
+## Issues
+At the moment, there is a bug that will not allow  **Safair** users to see in their browsers. Future work will fix this issue.
+
 
 ## Authors
 
