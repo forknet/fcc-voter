@@ -50,3 +50,5 @@ At the moment, there is a bug that will not allow  **Safair** users to see in th
 ## Authors
 
 * **Kenzo Mendoza** - *Initial work* - [Neotriz](https://github.com/neotriz)
+
+https://www.reddit.com/r/node/comments/5iv68i/expressjs_react_reactrouter_unexpected_token_error/
